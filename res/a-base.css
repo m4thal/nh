@@ -38,5 +38,5 @@ body{height:100vh;-webkit-font-smoothing:antialiased;word-wrap:break-word;word-b
 body *{font-family:'NotoSansCJKkr', sans-serif;}
 .container{position:relative;width:375px;max-width:375px;height:812px;min-height:812px;margin:0;top:50%;left:50%;transform:translate(-50%, -50%);overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;background:#fff;}
 .container::-webkit-scrollbar{display:none;}
-.contents{margin: 0 auto;}
+.contents{position:relative;margin: 0 auto;}
 .top_bar img{width:375px;height:44px;}
