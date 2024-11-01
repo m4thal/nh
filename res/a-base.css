@@ -35,7 +35,7 @@ textarea:not([rows]) {min-height: 10em;}
 
 /* common */
 body{height:100vh;-webkit-font-smoothing:antialiased;word-wrap:break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;background:#000;}
-body *{font-family: ''}
+body *{font-family:'NotoSansCJKkr', sans-serif;}
 .container{position:relative;width:375px;max-width:375px;height:812px;min-height:812px;margin:0;top:50%;left:50%;transform:translate(-50%, -50%);overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;background:#fff;}
 .container::-webkit-scrollbar{display:none;}
 .contents{margin: 0 auto;}
