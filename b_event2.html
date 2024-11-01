@@ -15,9 +15,9 @@
         .container::-webkit-scrollbar{display:none;}
         .img_wrap {position:relative}
         .img_wrap img {display:block;width:100%}
-        .check {position:absolute;width:100px;height:97px;top:204px;left:34px;border:1px solid red;appearance:none;}
-        .check.on 
-        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:55px;z-index:5;border:1px solid red}
+        .check {position:absolute;width:116px;height:120px;top:201.5px;left:24px;}
+        .check.on {background:url("./images/b_event/check_on.png") no-repeat;background-size:116px 120px}
+        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:55px;z-index:5;}
 
     </style>
 </head>
@@ -31,6 +31,9 @@
        
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+	        buttonMotion();
+        });
        const buttonMotion = () => { 
             const btM = document.querySelectorAll('.check');
             btM.forEach(button => {
