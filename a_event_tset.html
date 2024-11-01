@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./res/a-base.css">
+    <title>Document</title>
+    <style>
+        /* 인트로 */
+        .intro{position: absolute; top: 0; left: 0; animation: intro 1s 0.5s ease-in forwards;}
+        @keyframes intro{0%{opacity: 1;}100%{opacity: 0;}}
+
+        /* 셀렉 */
+        .select > * {position:absolute;}
+        .select a{width:20px;height:20px;background:#000;z-index:1;}
+        .select a:first-of-type{top:60px;left:20px;}
+        .select a:last-of-type{top:60px;right:25px;}
+        .select button{background:#000;width:343px;height:48px;bottom:16px;left:16px;z-index:1;cursor:pointer;}
+        
+        /* 뚝빼기 */
+        .cooking{background: url(./res/a-images/event/cooking.png) no-repeat;width:100%;background-size:contain;height:100%;display:none;}
+        .pot{position:absolute;width:278px;top:349px;left:48px;}
+        .pot img:last-of-type{position:absolute;width:264px;top:2px;left:7px; z-index: 2;} /* 탕 */
+
+        /* 야채 */
+        .vegetable > img{position: absolute;}
+        /* 탕보다 인덱스 낮은애들 3, 탕보다 높은애들9, 탕5  */
+        .vegetable img:nth-of-type(1){width:90px;top:331px;left:67px;z-index:9;}/* 도착지점임, 시작은 top 90px 쯤예상 */
+        .vegetable img:nth-of-type(2){height:140px;top:317px;left:233px;z-index:9;}
+        .vegetable img:nth-of-type(3){width:33px;top:349px;left:151px;z-index:9;}
+        .vegetable img:nth-of-type(4){width:72px;top:326px;left:167px;z-index:9;}
+        .vegetable img:nth-of-type(5){width:24px;top:349px;left:52px;}
+        .vegetable img:nth-of-type(6){width:16px;top:346px;left:123px;}
+        .vegetable img:nth-of-type(7){width:212px;top:388px;left:93px;z-index:9;}
+
+    </style>
+</head> 
+<body>
+    <div class="container">
+        <div class="select">
+            <a href=""></a>
+            <img src="./res/a-images/event/select.png" alt="">
+            <a href=""></a>
+            <button></button>
+        </div>
+        <div class="cooking">
+            <div class="pot">
+                <img src="./res/a-images/event/pot1.png" alt="">
+                <img src="./res/a-images/event/pot3.png" alt="">
+            </div>
+            <div class="vegetable">
+                <img src="./res/a-images/event/vegetable1.png" alt="">
+                <img src="./res/a-images/event/vegetable2.png" alt="">
+                <img src="./res/a-images/event/vegetable3.png" alt="">
+                <img src="./res/a-images/event/vegetable4.png" alt="">
+                <img src="./res/a-images/event/vegetable5.png" alt="">
+                <img src="./res/a-images/event/vegetable6.png" alt="">
+                <img src="./res/a-images/event/vegetable7.png" alt="">
+                <img src="./res/a-images/event/vegetable8.png" alt="">
+            </div>
+        </div>
+        <div class="intro">
+            <img src="./res/a-images/event/intro.png" alt="">
+        </div>
+    </div>
+    <script>
+        const select = document.querySelector(".select");
+        const cooking = document.querySelector(".cooking");
+        const intro = document.querySelector(".intro");
+
+        document.querySelector(".select button").addEventListener('click', function(){
+            select.style.display = "none";
+            intro.style.display = "none";
+            cooking.style.display = "block";
+        })
+    </script>
+</body>
+</html>
