@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{clip-path: url(#testRound); width: 500px; height:500px; position: relative;}
+        .test div{ background: url(./unnamed.jpg); width: 1000px; height:1000px; animation: rotate 3s linear infinite;  background-size: cover; background-repeat: none; background-position: center center; position: absolute; top: 50%; left: 50%; margin-left: -500px; margin-top: -500px;}
+        @keyframes rotate {
+        from {
+            -webkit-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <svg>
+        <defs>
+            <clipPath id="testRound">
+                <path class="cls-1" d="M416.64,500H83.36c-45.97,0-83.36-37.4-83.36-83.37V83.36C0,37.4,37.4,0,83.36,0h333.27c45.97,0,83.36,37.4,83.36,83.36v333.26c0,45.97-37.4,83.37-83.36,83.37ZM83.36,40.85c-23.44,0-42.51,19.07-42.51,42.51v333.26c0,23.45,19.07,42.52,42.51,42.52h333.27c23.44,0,42.51-19.07,42.51-42.52V83.36c0-23.44-19.07-42.51-42.51-42.51H83.36Z"/>
+            </clipPath>
+        </defs>
+    </svg>
+    <div class="test">
+        <div></div>
+    </div>
+</body>
+</html>
