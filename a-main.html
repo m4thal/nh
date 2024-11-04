@@ -8,14 +8,45 @@
     <script src="./res/swiper-bundle.min.js"></script>
     <script src="./res/jquery-3.6.4.min.js"></script>
     <title>메인</title>
+
+    <style>
+        img{width:100%;}
+        button{background-color:transparent;outline:none;border:none;}
+        .blind{border: 0;clip: rect(0 0 0 0);clip-path: inset(50%); width: 1px;height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;white-space: nowrap;}
+        .swiper {width: 100%;height: 100%}
+        .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: flex;justify-content: center;align-items: center;}
+        .swiper-slide img {display: block;width: 100%;height: 100%;object-fit: cover;}
+
+        header .h_inner{display:flex;justify-content: space-between; padding:15.85px 22px 36px 19px}
+        header .h_left{width: 160px;height: 24px;}
+        header .icon button{width:24px; height:24px;}
+        header #btn_en{background:url('./images/a-images/main/icon_en.png') no-repeat center / 24px; margin-right:20px;}
+        header #btn_alert{background:url('./images/a-images/main/icon_alert.png') no-repeat center / 24px;}
+    </style>
+
 </head>
 
 
 <body>
     <div id="wrap" class="container">
-        <div class="top_bar"><img src="./res/a-images/status_bar.png" alt=""></div>
-        <div class="option_bar"></div>
-        <div class="contents"></div>
+        <div class="top_bar"><img src="./images/a-images/status_bar.png" alt=""></div>
+        <!-- <div class="option_bar"></div> -->
+        <header>
+            <div class="h_inner">
+                <div class="h_left">
+                    <img src="./images/a-images/main/h_left.png" alt="">
+                </div>
+                <div class="icon">
+                    <button id="btn_en"><span class="blind"></span></button>
+                    <button id="btn_alert"><span class="blind"></span></button>
+                </div>
+            </div>
+        </header>
+        <div class="contents">
+            <div class="cont_top">
+                <img src="./images/a-images/main/" alt="">
+            </div>
+        </div>
         <div class="menu">
             <ul>
                 <li class="menu1"><a href="./a-main.html"></a></li>
