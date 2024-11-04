@@ -10,31 +10,117 @@
     <title>교통카드 충전</title>
 </head>
 <style>
+    /* top */
     .top_bar, .control_bar, .intro_txt{background:#368DED;}
+    .btn_move{position:absolute;top:52px;left:20px;width:32px;height:32px;}
     .intro_txt{padding:12px 0 24px 20px;}
+    /* contents */
+    .price_wrap{padding:36px 20px 65px}
+    .price.active, .btn.active{display:none;}
+    .numb_pad .btn_price{position:absolute;top:238px;left:105.75px;width:77.75px;height:36px;border-radius:10px;}
+    .btn_wrap{width:100%;padding:20px 20px 24px}
+    .btn{display:flex;justify-content:center;align-items:center;width:335px;height:56px;text-align:center;border-radius:16px;font-size:18px;font-weight:500;line-height:26px;letter-spacing:-0.5px;cursor:pointer;}
+    .btn.inactive{color:#B9C1C9;background:#EBEFF5}
+    .btn.active{line-height:56px;color:#FFF;background:#0A69ED;}
+    /* popup */
+    body.pop_open{overflow:hidden;}
+    .pop_wrap{display:none;position:fixed;top:50%;left:0;right:0;bottom:0;transform:translateY(-50%);justify-content:center;align-items:center;height:812px;background:var(--dim-black-60, rgba(0, 0, 0, 0.60));z-index:10;}
+    .pop_wrap.is_visible{display:flex;}
+    .popup{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:0;max-width:375px;border-radius:20px 20px 0px 0px;padding:24px 20px 0 20px;box-shadow:0 0 10px rgba(0, 0, 0, 0.2);background:#FFF;transition: transform 0.3s ease;}
+    .popup .btn_close{margin:24px 20px;border:0;color:#FFF;background:#0A69ED;}
+    .pop_close{position:absolute;top:o;right:20px;width:24px;height:24px;background:url("./images/a-images/charge/btn_close.svg");}
+    /* home indicator */
+    .container::after{content:"";position:absolute;bottom:0;left:0;width:375px;height:21px;background:url("./images/a-images/home_indicator.png") 0 0 / 100%;}
 </style>
 
 <body>
     <div id="wrap" class="container">
-        <div class="top_bar"><img src="./res/a-images/status_bar_white.png" alt=""></div>
+        <div class="top_bar"><img src="./images/a-images/status_bar_white.png" alt=""></div>
         <div class="control_bar">
-            <img src="./res/a-images/charge/control_bar.png" alt="" style="width:375px;height:48px;">
+            <img src="./images/a-images/charge/control_bar.png" alt="" style="width:375px;height:48px;">
+            <a class="btn_move" href="./a-main.html"></a>
         </div>
         <div class="intro_txt">
-            <img src="./res//a-images/charge/top_text.png" alt="" style="width:283px;height:52px;">
-
+            <img src="./images/a-images/charge/top_text.png" alt="" style="width:283px;height:52px;">
         </div>
         <div class="contents">
-            
-        </div>
-        <div class="menu">
-            <ul>
-                <li class="menu1"><a href="./a-main.html"></a></li>
-                <li class="menu2"><a href="./"></a></li>
-                <li class="menu3"><a href="./"></a></li>
-                <li class="menu4"><a href="./"></a></li>
-            </ul>
+            <div class="price_wrap">
+                <img class="price inactive" src="./images/a-images/charge/img_cont01-1.png" alt="">
+                <img class="price active" src="./images/a-images/charge/img_cont01-2.png" alt="">
+            </div>
+            <div class="numb_pad">
+                <img src="./images/a-images/charge/img_cont02.png" alt="">
+                <a class="btn_price" href=""></a>
+            </div>
+            <div class="btn_wrap">
+                <a href="#none" class="btn inactive">확인</a>
+                <a href="#popupModal" class="btn active">확인</a>
+            </div>
         </div>
     </div>
+    <div id="popupModal" class="pop_wrap" aria-hidden="true">
+        <article class="popup">
+            <a class="pop_close" href=""></a>
+            <img src="./images/a-images/charge/popup_cont01.png" alt="">
+            <a class="btn btn_close" aria-label="Close Popup">교통카드 충전하기</a>
+            <img src="./images/a-images/home_indicator.png" alt="">
+        </article>
+    </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnPrice = document.querySelector('.btn_price');
+        const activeElements = document.querySelectorAll('.active');
+        const inactiveElements = document.querySelectorAll('.inactive');
+        const activeButton = document.querySelector('.btn.active');
+        const popupModalId = '#popupModal';
+
+        function showActiveElements() {
+            activeElements.forEach(element => {
+                element.style.display = "block";
+            });
+        }
+
+        function hideInactiveElements() {
+            inactiveElements.forEach(element => {
+                element.style.display = "none"; 
+            });
+        }
+
+        btnPrice.addEventListener('click', function(event) {
+            event.preventDefault();
+            showActiveElements();
+            hideInactiveElements();
+        });
+
+        activeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            popMotion.popOpen(popupModalId);
+        });
+    });
+
+    $(function() {
+        const popupModalId = '#popupModal';
+        const btnClose = $('.btn_close');
+
+        $('.btn.active').on('click', function(event) {
+            event.preventDefault();
+            $(popupModalId).addClass('is_visible').attr('aria-hidden', 'false');
+            $('body').addClass('pop_open');
+        });
+
+        btnClose.on('click', function() {
+            $(popupModalId).removeClass('is_visible').attr('aria-hidden', 'true');
+            $('body').removeClass('pop_open');
+        });
+
+        $('.pop_close').on('click', function(event) {
+            event.preventDefault(); 
+            $(popupModalId).removeClass('is_visible').attr('aria-hidden', 'true');
+            $('body').removeClass('pop_open');
+        });
+    });
+</script>
+
+
 </html>
