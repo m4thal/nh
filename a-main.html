@@ -114,7 +114,7 @@
                             <div class="linkbox">
                                 <a class="cardlink" href="javascript:slideOpen('pop1')" title=""></a>
                                 <div class="linkbox_r">
-                                    <a class="charge" href="a-charge.html" title="">충전</a>
+                                    <a class="charge" href="#none" title="">충전</a>
                                     <a class="payment" href="a-QRpay.html" title="">결제</a>
                                 </div>
                             </div>
@@ -129,8 +129,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>  -->
                 </div>
             </div>
             <div class="btm">
@@ -164,19 +162,12 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="menu">
-            <ul>
-                <li class="menu1"><a href="./a-main.html"></a></li>
-                <li class="menu2"><a href="./"></a></li>
-                <li class="menu3"><a href="./"></a></li>
-                <li class="menu4"><a href="./"></a></li>
-            </ul>
-        </div> -->
 
         <script src="./res/swiper-bundle.min.js"></script>
         <script src="./res/jquery-3.6.4.min.js"></script>
         <!-- Initialize Swiper -->
         <script>
+            //스와이퍼 슬라이드
             var swiper = new Swiper(".cardSwiper", {
                 navigation: {
                     nextEl: ".swiper-button-next",
@@ -184,18 +175,19 @@
                 },
             });
 
+
+            //팝업이벤트
             $(function(){
                 $('.pop_wrap').hide();
                 
             });
 
             function slideOpen(a){
-                // $('.cardlink').on('click',function(){
-                    $('#'+a).show();
-                // });
+                $('#'+a).show();
             }
 
 
+            //스크롤 이벤트
             $(function(){
                 var scrolling; //스크롤하는 중인지 감지
                 let lastScrollTop = 0;
@@ -204,40 +196,37 @@
                     $('.contents').scroll(function(event){
                         if (!scrolling) {
                     
-                                const st = $(this).scrollTop(); //// 접근하기 쉽게 현재 스크롤의 위치를 저장한다.
-                                if(Math.abs(lastScrollTop - st) <= delta) return; //// 설정한 delta 값보다 더 스크롤되었는지를 확인한다.
-                                if((st > lastScrollTop) && (lastScrollTop > 0)) { //더 스크롤되었는지 확인하고 스크롤의 방향이 위인지 아래인지를 확인한다.
-                                    // $('#slide_box').removeClass('up').addClass('down'); 
-                                    $('#slide_box').removeClass('up').addClass('down'); //// Scroll Down
+                            const st = $(this).scrollTop(); //// 접근하기 쉽게 현재 스크롤의 위치를 저장한다.
+                            if(Math.abs(lastScrollTop - st) <= delta) return; //// 설정한 delta 값보다 더 스크롤되었는지를 확인한다.
+                            if((st > lastScrollTop) && (lastScrollTop > 0)) { //더 스크롤되었는지 확인하고 스크롤의 방향이 위인지 아래인지를 확인한다.
+                                // $('#slide_box').removeClass('up').addClass('down'); 
+                                $('#slide_box').removeClass('up').addClass('down'); //// Scroll Down
 
-                                    
-                                    if($('#slide_box').hasClass('down') ==true){
-                                        clearTimeout(scrolling);
-                                        scrolling = setTimeout(() => {
-                                            // console.log('stop');
-                                            $('#slide_box').removeClass().addClass('up');
+                                
+                                if($('#slide_box').hasClass('down') ==true){
+                                    clearTimeout(scrolling);
+                                    scrolling = setTimeout(() => {
+                                        // console.log('stop');
+                                        $('#slide_box').removeClass().addClass('up');
 
-                                            
-                                        }, 350);
-                                    }
+                                        
+                                    }, 1000);
+                                }
 
-                                }else {
-                                    $('#slide_box').removeClass('down'); //// Scroll Up
-                                };
+                            }else {
+                                $('#slide_box').removeClass('down'); //// Scroll Up
+                            };
 
-                                // lastScrollTop 에 현재 스크롤위치를 지정한다.
-                                lastScrollTop = st;
-                                scrolling = undefined;
-                                // console.log('start scrolling!');
-                                console.log(scrolling);
-                        }
+                            // lastScrollTop 에 현재 스크롤위치를 지정한다.
+                            lastScrollTop = st;
+                            scrolling = undefined;
+                            // console.log('start scrolling!');
+                            console.log(scrolling);
+                    }
 
 
-
-                    });
+                });
                     
-
-
             });
 
 
