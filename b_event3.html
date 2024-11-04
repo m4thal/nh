@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B event 농작물</title>
+    <title>전북 임실 왕대박 농원</title>
     <link rel="stylesheet" href="./res/swiper-bundle.min.css">
     <script src="./res/swiper-bundle.min.js"></script>
     <script src="./res/jquery-3.6.4.min.js"></script>
@@ -13,35 +13,40 @@
         body{height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;background:#000;color:#333;margin:0;padding:0;border:0;}
         .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:812px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;}
         .container::-webkit-scrollbar{display:none;}
-        .img_wrap {position:relative}
-        .img_wrap img {display:block;width:100%}
-        .check {position:absolute;width:116px;height:120px;top:201.5px;left:24px;}
-        .check.on {background:url("./images/b_event/check_on.png") no-repeat;background-size:116px 120px}
-        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:55px;z-index:5;}
-
+        .img_wrap {position:relative; background-image: url(./images/b_event/b_event_bg2.jpg); width: 100%; height: 100%; background-size: cover;}
+        .img_wrap .status-bar img{width: 100%;}
+        .img_wrap .header{display: flex; padding: 0 30px; height: 60px; align-items: center;}
+        .img_wrap .header .before-btn img{vertical-align: middle;}
+        .img_wrap .header .header-title{font-size: 18px; font-weight: bold; margin-left: 67px;}
+        .img_wrap .bottom-soil{position: absolute; bottom: -8px;}
+        .img_wrap .bottom-soil img{width: 100%;}
     </style>
 </head>
 <body>
     <div id="wrap" class="container event">
         <div class="img_wrap">
-            <img src="./images/b_event/b_event2.jpg" alt="" class="">
-            <a href="#" class="check">
-            <a href="b_event3.html" class="bt"></a>
+            <div class="status-bar"><img src="./images/b_event/status_bar.png" alt=""></div>
+            <div class="header">
+                <div class="before-btn"><img src="./images/b_event/arrow_left.svg" alt="이전"></div>
+                <div class="header-title">전북 임실 왕대박 농원</div>
+            </div>
+            <div class="cont-title">
+                <h2></h2>
+            </div>
+            <div class="tree"></div>
+            <div class="growing-btn">
+                <div class="water"></div>
+                <div class="fert"></div>
+                <div class="bug"></div>
+            </div>
+            <div class="progress-bar">
+                <progress max="100" value="60"></progress>
+                <p>수확까지 40% 남았어요!</p>
+            </div>
+            <div class="bottom-soil"><img src="./images/b_event/bottom_soil.png" alt=""></div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-	        buttonMotion();
-        });
-       const buttonMotion = () => { 
-            const btM = document.querySelectorAll('.check');
-            btM.forEach(button => {
-                button.addEventListener("click", () => {
-                    button.classList.toggle('on');
-                });
-            });
-        };
-
     </script>
     </html>
 </body>
