@@ -6,7 +6,11 @@
     <title>Document</title>
     <style>
         .test{clip-path: url(#testRound); width: 500px; height:500px; position: relative;}
-        .test div{ background: url(./unnamed.jpg); width: 1000px; height:1000px; animation: rotate 3s linear infinite;  background-size: cover; background-repeat: none; background-position: center center; position: absolute; top: 50%; left: 50%; margin-left: -500px; margin-top: -500px;}
+        .test div{ background: repeating-conic-gradient(
+            #14229f 7%,
+  #87BBF5 17%,
+  #0F962F 30%, #D3F2DA 37%, #E4F9E9 43%, #368DED 52%, #14229F 56%
+); width: 1000px; height:1000px; animation: rotate 3s linear infinite;  background-size: cover; background-repeat: none; background-position: center center; position: absolute; top: 50%; left: 50%; margin-left: -500px; margin-top: -500px;}
         @keyframes rotate {
         from {
             -webkit-transform: rotate(0deg);
