@@ -12,14 +12,20 @@
 
 <style>
     .container{overflow:hidden;}
-    .contents{position: relative;}
-    .contents img{position: absolute; top: 0;}
-    
+    .contents{position:relative;}
+    .contents img{position:absolute;top:0;}
+    /* button */
     .btn_link{position:absolute;top:427px;left:139.5px;width:95px;height:34px;background:transparent}
-    .btn_close{position:absolute;top:8px;right:20px;width:32px;height:32px;background:transparent;}
-
-    .qr_border{clip-path: path('M144,5c6.07,0,11,4.93,11,11v128c0,6.07-4.93,11-11,11H16c-6.07,0-11-4.93-11-11V16c0-6.07,4.93-11,11-11h128M144,0H16C7.16,0,0,7.16,0,16v128c0,8.84,7.16,16,16,16h128c8.84,0,16-7.16,16-16V16c0-8.84-7.16-16-16-16h0Z'); width: 160px; height:160px; position: relative; left: 50%; margin-left: -80px; top: 234px;}
-    .qr_border div{ background: repeating-conic-gradient(#14229f 7%,#87BBF5 17%,#0F962F 30%, #D3F2DA 37%, #E4F9E9 43%, #368DED 52%, #14229F 56%); width: 1000px; height:1000px; animation: rotate 5s linear infinite;  background-size: cover; background-repeat: none; background-position: center center; position: absolute; top: 50%; left: 50%; margin-left: -500px; margin-top: -500px; ;}
+    .btn_close{position:absolute;top:8px;right:20px;width:32px;height:32px;background:transparent;z-index:10;}
+    /* QR animation */
+    .qr_border{
+        clip-path: path('M144,5c6.07,0,11,4.93,11,11v128c0,6.07-4.93,11-11,11H16c-6.07,0-11-4.93-11-11V16c0-6.07,4.93-11,11-11h128M144,0H16C7.16,0,0,7.16,0,16v128c0,8.84,7.16,16,16,16h128c8.84,0,16-7.16,16-16V16c0-8.84-7.16-16-16-16h0Z'); 
+        position:relative;width:160px;height:160px;left:50%;margin-left:-80px;top:234px;
+    }
+    .qr_border div{
+        position:absolute;top:50%;left:50%;margin-left:-500px;margin-top:-500px;width:1000px;height:1000px; 
+        background:repeating-conic-gradient(#14229f 7%,#87BBF5 17%,#0F962F 30%, #D3F2DA 37%, #E4F9E9 43%, #368DED 52%, #14229F 56%) no-repeat 0 0 / cover;animation: rotate 5s linear infinite;
+        }
     @keyframes rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -39,9 +45,7 @@
         <div class="top_bar"><img src="./images/a-images/status_bar.png" alt=""></div>
         <div class="contents">
             <a href="./a-main.html" class="btn_close"></a>
-            <div class="qr_border">
-                <div></div>
-            </div>
+            <div class="qr_border"><div></div></div>
             <img src="./images/a-images/qr/cont_pay.png" alt="">
             <a href="./a-QRscan.html" class="btn_link"></a>
         </div>

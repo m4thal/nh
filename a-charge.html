@@ -10,7 +10,7 @@
     <title>교통카드 충전</title>
 </head>
 <style>
-    /* 상단 */
+    /* top */
     .top_bar, .control_bar, .intro_txt{background:#368DED;}
     .btn_move{position:absolute;top:52px;left:20px;width:32px;height:32px;}
     .intro_txt{padding:12px 0 24px 20px;}
@@ -22,11 +22,11 @@
     .btn{display:flex;justify-content:center;align-items:center;width:335px;height:56px;text-align:center;border-radius:16px;font-size:18px;font-weight:500;line-height:26px;letter-spacing:-0.5px;cursor:pointer;}
     .btn.inactive{color:#B9C1C9;background:#EBEFF5}
     .btn.active{line-height:56px;color:#FFF;background:#0A69ED;}
-    /* 팝업 */
+    /* popup */
     body.pop_open{overflow:hidden;}
-    .pop_wrap{display:none;position:fixed;top:50%;left:0;right:0;bottom:0;transform:translateY(-50%);justify-content:center;align-items:center;height:812px;background: var(--dim-black-60, rgba(0, 0, 0, 0.60));z-index:10;}
+    .pop_wrap{display:none;position:fixed;top:50%;left:0;right:0;bottom:0;transform:translateY(-50%);justify-content:center;align-items:center;height:812px;background:var(--dim-black-60, rgba(0, 0, 0, 0.60));z-index:10;}
     .pop_wrap.is_visible{display:flex;}
-    .popup{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:0;width: 90%;max-width: 375px;border-radius:20px 20px 0px 0px;padding:24px 20px 0 20px;box-shadow:0 0 10px rgba(0, 0, 0, 0.2);background:#FFF;}
+    .popup{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:0;max-width:375px;border-radius:20px 20px 0px 0px;padding:24px 20px 0 20px;box-shadow:0 0 10px rgba(0, 0, 0, 0.2);background:#FFF;transition: transform 0.3s ease;}
     .popup .btn_close{margin:24px 20px;border:0;color:#FFF;background:#0A69ED;}
     .pop_close{position:absolute;top:o;right:20px;width:24px;height:24px;background:url("./images/a-images/charge/btn_close.svg");}
     /* home indicator */
