@@ -18,6 +18,122 @@
         .img_wrap .header{display: flex; padding: 0 30px; height: 60px; align-items: center;}
         .img_wrap .header .before-btn img{vertical-align: middle;}
         .img_wrap .header .header-title{font-size: 18px; font-weight: bold; margin-left: 67px;}
+        .img_wrap .cont-text{text-align: center; font-size: 26px; font-weight: light; margin-bottom: 70px; margin-top: 20px; line-height: 32px; color: #171717; transition: all ease 3s; position: relative;}
+        .img_wrap .cont-text p{position: absolute; width: 100%; margin-top: 0}
+        .img_wrap .cont-text p.cha{opacity: 0;}
+        .img_wrap .cont-text p.cha2{opacity: 0;}
+        .img_wrap .growing-btn{position: absolute; top: 216px; right:31px; display: flex; flex-direction: column; max-height: 218px; transition: all ease 1s; z-index: 30;}
+        .img_wrap .growing-btn div{margin: 0; line-height: 1; position: relative;}
+        .img_wrap .growing-btn img{margin-bottom: 26px; }
+        .img_wrap .growing-btn .water::after{position: absolute; content: ''; border: 5px solid #fe6333; border-radius: 100%; width: 64px; height: 64px; top: -5px; left:-5px}
+        .img_wrap .growing-btn .fert #countdown{position: absolute; width: 45px; height: 16px; background-color: #215028; color: #fff; border-radius: 10px; font-size: 9px; line-height: 18px; text-align: center; top: 51px; left: 50%; margin-left: -22px; z-index: 10;}
+        .img_wrap .growing-btn .fert::after{position: absolute; content:''; background-image: url(./images/b_event/percent.svg); height: 64px; width: 64px; top: -5px; left: -5px;}
+        .img_wrap .growing-btn img.last{margin: 0;}
+
+        .img_wrap .watering{position: absolute; top: 0; left: 0; opacity: 0; transition: all ease 1s;}
+        .img_wrap .watering .watering-can{position: absolute; left: 202px; top: 185px; width: 132px; animation: rotate2 2s linear infinite;}
+        .img_wrap .watering .watering-can img{width: 100%;}
+        .img_wrap .watering .water-drop{position:absolute; left: 71px; top: 266px; width: 216px; animation: rotate3 2s linear infinite;}
+        .img_wrap .watering .water-drop img{width: 100%;}
+
+        .img_wrap .tomato-group{position: relative; left: 50%; margin-left: -135px; top: 70px;}
+        .img_wrap .tomato-group .tomato-stem{animation: rotateStem 2s linear infinite; position: relative;}
+        .img_wrap .tomato-group .tomato{position: absolute; animation: rotate1 2s linear infinite; transition: all ease 1s;}
+        .img_wrap .tomato-group .tomato1{left: 105px; top: 99px; width: 32px;}
+        .img_wrap .tomato-group .tomato2{left: 64px; top: 150px; animation: rotate2 2s linear infinite; width: 62px;}
+        .img_wrap .tomato-group .tomato3{left: 159px; top: 141px; width: 62px;}
+        .img_wrap .tomato-group .tomato4{left: 59px; top: 238px; animation: rotate2 2s linear infinite; width: 39px;}
+        .img_wrap .tomato-group .tomato5{left: 151px; top: 241px; width: 66px;}
+
+        .img_wrap .tomato-group .tomato1.active1{left: 105px; top: 99px; width: 39px;}
+        .img_wrap .tomato-group .tomato2.active1{left: 64px; top: 150px; animation: rotate2 2s linear infinite; width: 89px;}
+        .img_wrap .tomato-group .tomato3.active1{left: 159px; top: 141px; width: 72px;}
+        .img_wrap .tomato-group .tomato4.active1{left: 59px; top: 238px; animation: rotate2 2s linear infinite; width: 46px;}
+        .img_wrap .tomato-group .tomato5.active1{left: 151px; top: 241px; width: 95px;}
+
+        .img_wrap .tomato-group .tomato1.active2{left: 105px; top: 99px; width: 61px;}
+        .img_wrap .tomato-group .tomato2.active2{left: 64px; top: 150px; animation: rotate2 2s linear infinite; width: 89px;}
+        .img_wrap .tomato-group .tomato3.active2{left: 159px; top: 141px; width: 91px;}
+        .img_wrap .tomato-group .tomato4.active2{left: 59px; top: 238px; animation: rotate2 2s linear infinite; width: 75px;}
+        .img_wrap .tomato-group .tomato5.active2{left: 151px; top: 241px; width: 112px;}
+
+        @keyframes rotate1 {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(4deg);
+            }
+            75%{
+                transform: rotate(-4deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes rotate2 {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(-6deg);
+            }
+            75%{
+                transform: rotate(6deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes rotate3 {
+            0% {
+                transform: rotate(0);
+                top: 266px;
+                opacity: 1;
+            }
+            25% {
+                transform: rotate(-1deg);
+                top: 271px;
+                opacity: .5;
+            }
+            75%{
+                transform: rotate(1deg);
+                top: 255px;
+                opacity: .8;
+            }
+            100% {
+                transform: rotate(0);
+                top: 266px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateStem {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(1deg);
+            }
+            75%{
+                transform: rotate(-1deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        .img_wrap .progress-bar{position: absolute; z-index: 10; left: 50%; margin-left: -129px; text-align: center; top: 655px}
+        .img_wrap .progress-bar progress{width: 258px; height: 43px; background-color: #5B2E14; border: 4px solid #5B2E14; border-radius: 22px; box-shadow: inset 0 2px 10px 0 rgba(0,0,0,.25);}
+        .img_wrap .progress-bar progress::-webkit-progress-bar{background: #5B2E14; border-radius: 22px;}
+        .img_wrap .progress-bar progress::-webkit-progress-value{background-color: #FFC529; border-radius: 22px; box-shadow: inset #e69d0b -2px -10px 12px 0, inset #fff 0px 3px 10px -4px;}
+        .img_wrap .progress-bar progress.active::-webkit-progress-value{background-image: url(./images/b_event/progress_bg.svg);}
+        .img_wrap .progress-bar p{margin-top: 10px; color: #fff; font-size: 12px; font-weight: 500; position: absolute; width: 100%;}
+        .img_wrap .progress-bar p span{font-weight: 900;}
+        .img_wrap .progress-bar p.pr-cha{opacity: 0;}
+        .img_wrap .harvest-btn{position: absolute; top: 650px; width: 100%; text-align: center; z-index: 100; opacity: 0;}
         .img_wrap .bottom-soil{position: absolute; bottom: -8px;}
         .img_wrap .bottom-soil img{width: 100%;}
     </style>
@@ -30,23 +146,188 @@
                 <div class="before-btn"><img src="./images/b_event/arrow_left.svg" alt="이전"></div>
                 <div class="header-title">전북 임실 왕대박 농원</div>
             </div>
-            <div class="cont-title">
-                <h2></h2>
+            <div class="cont-text">
+                <p class="ori">토마토의 순우리말은<br>'일년감'입니다.</p>
+                <p class="cha">물 마시고<br>무럭무럭 자라는 중</p>
+                <p class="cha2">토마토가 다 자랐어요<br>수확해볼까요?</p>
             </div>
-            <div class="tree"></div>
+            <div class="tomato-group">
+                <img class="tomato-stem" src="./images/b_event/tomato-stem.svg" alt="">
+                <img src="./images/b_event/tomato1.png" alt="" class="tomato tomato1">
+                <img src="./images/b_event/tomato2.png" alt="" class="tomato tomato2">
+                <img src="./images/b_event/tomato3.png" alt="" class="tomato tomato3">
+                <img src="./images/b_event/tomato4.png" alt="" class="tomato tomato4">
+                <img src="./images/b_event/tomato5.png" alt="" class="tomato tomato5">
+            </div>
             <div class="growing-btn">
-                <div class="water"></div>
-                <div class="fert"></div>
-                <div class="bug"></div>
+                <div class="water"><img src="./images/b_event/water.svg" alt=""></div>
+                <div class="fert">
+                    <img src="./images/b_event/fert.svg" alt="">
+                    <div id="countdown">
+                        <span id="hours">12</span>:
+                        <span id="minutes">00</span>:
+                        <span id="seconds">00            </span>
+                      </div>
+                </div>
+                <div class="bug"><img class="last" src="./images/b_event/bug.svg" alt=""></div>
+            </div>
+            <div class="watering">
+                <div class="watering-can"><img src="./images/b_event/wateringcan.png" alt=""></div>
+                <div class="water-drop"><img src="./images/b_event/waterdrop.png" alt=""></div>
             </div>
             <div class="progress-bar">
                 <progress max="100" value="60"></progress>
-                <p>수확까지 40% 남았어요!</p>
+                <p class="pr-ori">수확까지 <span>40%</span> 남았어요!</p>
+                <p class="pr-cha">토마토가 자라고 있어요.</p>
             </div>
+            <div class="harvest-btn"><a href="./b_event4.html"><img src="./images/b_event/harvest-btn.svg" alt=""></a></div>
             <div class="bottom-soil"><img src="./images/b_event/bottom_soil.png" alt=""></div>
         </div>
     </div>
     <script>
+        // 12시간을 밀리초로 변환
+        const twelveHours = 12 * 60 * 60 * 1000;
+
+        // 카운트다운 시작 시간 설정
+        let countdownDate = new Date().getTime() + twelveHours;
+
+        // 1초마다 카운트다운 업데이트
+        let timer = setInterval(function() {
+        // 현재 시간 가져오기
+        let now = new Date().getTime();
+        
+        // 남은 시간 계산
+        let distance = countdownDate - now;
+        
+        // 시, 분, 초 계산
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // 결과를 HTML에 출력
+        document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        
+        // 카운트다운이 끝나면 타이머 정지
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "카운트다운 종료";
+        }
+        }, 1000);
+
+        function fadeOut(element, duration) {
+            let opacity = 1;
+            const interval = 1000;
+            const steps = duration / interval;
+            const stepSize = opacity / steps;
+
+            const fadeOutInterval = setInterval(function() {
+                if (opacity > 0) {
+                opacity -= stepSize;
+                element.style.opacity = opacity;
+                } else {
+                clearInterval(fadeOutInterval);
+                element.style.display = 'none';
+                }
+            }, interval);
+        };
+
+        function fadeIn(element, duration) {
+            element.style.opacity = 0;
+            element.style.display = '';
+
+            let opacity = 0;
+            const interval = 1000;
+            const steps = duration / interval;
+            const stepSize = 1 / steps;
+
+            const fadeInInterval = setInterval(function() {
+                if (opacity < 1) {
+                opacity += stepSize;
+                element.style.opacity = opacity;
+                } else {
+                clearInterval(fadeInInterval);
+                element.style.display = 'block';
+                }
+            }, interval);
+        };
+
+        document.querySelector('.water').addEventListener("click", function(){
+            const elementToFadeOut = document.querySelector(".growing-btn");
+            const elementToFadeIn = document.querySelector(".watering");
+            const textChange1 = document.querySelector(".cont-text p.ori");
+            const textChange2 = document.querySelector(".cont-text p.cha");
+            const textChange3 = document.querySelector(".pr-ori");
+            const textChange4 = document.querySelector(".pr-cha");
+            const textChange5 = document.querySelector(".cont-text p.cha2");
+            const progress = document.querySelector("progress");
+            const progressBar1 = document.querySelector(".progress-bar");
+            const harvestBtn = document.querySelector(".harvest-btn");
+
+            progress.classList.add('active')
+
+            fadeOut(elementToFadeOut, 1000);
+            fadeIn(elementToFadeIn, 1000);
+            fadeOut(textChange1, 1000);
+            fadeIn(textChange2, 1000);
+            fadeOut(textChange3, 100);
+            fadeIn(textChange4, 100);
+
+            setTimeout(function(){
+                const elements = document.querySelectorAll('.tomato');
+
+                elements.forEach(element => {
+                    element.classList.add('active1');
+                });
+            }, 1000)
+
+            function animateProgress(progressElement, targetValue, duration) {
+            const startValue = progressElement.value;
+            const startTime = performance.now();
+
+            function updateProgress(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const easedProgress = easeInOutCubic(progress);
+                const currentValue = startValue + (targetValue - startValue) * easedProgress;
+
+                progressElement.value = currentValue;
+
+                if (progress < 1) {
+                requestAnimationFrame(updateProgress);
+                }
+            }
+
+            requestAnimationFrame(updateProgress);
+            }
+
+            // 이징 함수 (부드러운 애니메이션을 위해)
+            function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+
+            // 사용 예시
+            const progressBar = document.querySelector('progress');
+            animateProgress(progressBar, 100, 4000); // 2초 동안 0에서 100까지 채우기
+
+            setTimeout(function(){
+                fadeOut(progressBar1, 500);
+                fadeIn(harvestBtn, 500);
+                fadeOut(textChange2, 500);
+                fadeIn(textChange5, 500);
+                fadeOut(elementToFadeIn, 1000);
+                const elements = document.querySelectorAll('.tomato');
+
+                elements.forEach(element => {
+                    element.classList.add('active2');
+                });
+            }, 5500)
+            
+        })
+
+        
+
     </script>
     </html>
 </body>
