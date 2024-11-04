@@ -15,30 +15,34 @@
         .container::-webkit-scrollbar{display:none;}
         .img_wrap {position:relative}
         .img_wrap img {display:block;width:100%}
-        .bg {width:100%}
-        .motion1 {position:absolute;top:104px;left:48px;width:289px !important;margin:0 auto; z-index:1;animation:fadeIn 2s forwards;opacity:0}
-        .motion2 {position:absolute;top:286px;width:300.47px !important;left:57px;z-index:2;opacity:0;animation:fadeIn 2s forwards;animation-delay:1s;}
-        .motion3 {position:absolute;left:58.5px;bottom:100px;width:258px !important;z-index:3;opacity:0;animation:fadeIn 1.5s forwards;animation-delay:1.5s;}
-        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:70px;z-index:5;}
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+        .check {position:absolute;width:116px;height:120px;top:201.5px;left:24px;}
+        .check.on {background:url("./images/b_event/check_on.png") no-repeat;background-size:116px 120px}
+        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:55px;z-index:5;}
+
     </style>
 </head>
 <body>
     <div id="wrap" class="container event">
         <div class="img_wrap">
-            <img src="./images/b_event/b_event_txt1.png" alt="" class="motion1">
-            <img src="./images/b_event/b_event_img1.png" alt="" class="motion2">
-            <img src="./images/b_event/b_event_bt1.png" alt="" class="motion3">
-            <img src="./images/b_event/b_event_bg1.jpg" alt="bg">
-            <a href="b_event2.html" class="bt"></a>
+            <img src="./images/b_event/b_event2.jpg" alt="" class="">
+            <a href="#" class="check">
+            <a href="b-event3.html" class="bt"></a>
         </div>
        
     </div>
     <script>
-       
+        document.addEventListener('DOMContentLoaded', () => {
+	        buttonMotion();
+        });
+       const buttonMotion = () => { 
+            const btM = document.querySelectorAll('.check');
+            btM.forEach(button => {
+                button.addEventListener("click", () => {
+                    button.classList.toggle('on');
+                });
+            });
+        };
+
     </script>
     </html>
 </body>

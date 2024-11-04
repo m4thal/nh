@@ -24,11 +24,12 @@
     .btn.active{line-height:56px;color:#FFF;background:#0A69ED;}
     /* popup */
     body.pop_open{overflow:hidden;}
-    .pop_wrap.is_visible{display:flex;transform:translateY(-50%);}
-    .pop_wrap{display:none;position:fixed;top:50%;left:0;right:0;bottom:0;transform:translateY(-500%);justify-content:center;align-items:center;height:812px;background:var(--dim-black-60, rgba(0, 0, 0, 0.60));z-index:10;transition:all .3s ease}
-    .popup{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:0;max-width:375px;border-radius:20px 20px 0px 0px;padding:24px 20px 0 20px;box-shadow:0 0 10px rgba(0, 0, 0, 0.2);background:#FFF;}
-    .popup .btn_close{margin:24px 20px;border:0;color:#FFF;background:#0A69ED;}
-    .pop_close{position:absolute;top:o;right:20px;width:24px;height:24px;background:url("./images/a-images/charge/btn_close.svg");}
+    .pop_wrap.is_visible{display:flex;;}
+    .pop_wrap{display:none;position:fixed;top:50%;left:0;right:0;bottom:0;transform:translateY(-50%);justify-content:center;align-items:center;height:812px;background:var(--dim-black-60, rgba(0, 0, 0, 0.60));z-index:10;transition:all .3s ease}
+    .popup{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:0;max-width:375px;border-radius:20px 20px 0px 0px;padding:24px 20px 45px 20px;box-sizing:border-box;box-shadow:0 0 10px rgba(0, 0, 0, 0.2);background:#FFF;}
+    .popup .btn_close{margin:24px 20px 0 20px;border:0;color:#FFF;background:#0A69ED;}
+    .pop_close{position:absolute;top:24px;right:20px;width:24px;height:24px;background:url("./images/a-images/charge/btn_close.svg");}
+    .home_ind{position:absolute;bottom:0;left:0;}
     /* home indicator */
     .container::after{content:"";position:absolute;bottom:0;left:0;width:375px;height:21px;background:url("./images/a-images/home_indicator.png") 0 0 / 100%;}
 </style>
@@ -63,7 +64,7 @@
             <a class="pop_close" href=""></a>
             <img src="./images/a-images/charge/popup_cont01.png" alt="">
             <a class="btn btn_close">교통카드 충전하기</a>
-            <img src="./images/a-images/home_indicator.png" alt="">
+            <img class="home_ind" src="./images/a-images/home_indicator.png" alt="">
         </article>
     </div>
 </body>

@@ -57,6 +57,11 @@
         .img_wrap .tomato-group .tomato4.active2{left: 59px; top: 238px; animation: rotate2 2s linear infinite; width: 75px;}
         .img_wrap .tomato-group .tomato5.active2{left: 151px; top: 241px; width: 112px;}
 
+        .img_wrap .dim{position: absolute; width: 100%; height: 100%; background-image: url(./images/b_event/dim.png); opacity: 0; top: 0; z-index: 101; pointer-events: none; transition: all ease .2s;}
+        .img_wrap .input{position: absolute; z-index: 102; bottom: -620px; pointer-events: none; transition: all ease 1s;}
+        .img_wrap .input.active{bottom: -8px;}
+        .img_wrap .input img{width: 100%;}
+
         @keyframes rotate1 {
             0% {
                 transform: rotate(0);
@@ -180,8 +185,10 @@
                 <p class="pr-ori">수확까지 <span>40%</span> 남았어요!</p>
                 <p class="pr-cha">토마토가 자라고 있어요.</p>
             </div>
-            <div class="harvest-btn"><a href="./b_event4.html"><img src="./images/b_event/harvest-btn.svg" alt=""></a></div>
+            <div class="harvest-btn"><img src="./images/b_event/harvest-btn.svg" alt=""></div>
             <div class="bottom-soil"><img src="./images/b_event/bottom_soil.png" alt=""></div>
+            <div class="dim"></div>
+            <div class="input"><img src="./images/b_event/input.png" alt=""></div>
         </div>
     </div>
     <script>
@@ -323,10 +330,19 @@
                     element.classList.add('active2');
                 });
             }, 5500)
-            
         })
 
-        
+        document.querySelector('.harvest-btn').addEventListener("click", function(){
+            const dim = document.querySelector('.dim');
+            const inputPop = document.querySelector('.input')
+
+            fadeIn(dim, 300);
+
+            setTimeout(function(){
+                inputPop.classList.add("active");
+            },500);
+
+        })
 
     </script>
     </html>
