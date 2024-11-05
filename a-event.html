@@ -16,7 +16,8 @@
         .select > * {position:absolute;}
         .select a{width:20px;height:20px;z-index:1;}
         .select a:first-of-type{top:60px;left:20px;}
-        .select a:last-of-type{top:60px;right:25px;}
+        .select a.soup{width:99px;height:129px;top:178px;left:24px;box-sizing:border-box;}
+        .select a.soup.on{border:2px solid #FF6A00;border-radius:12px;box-shadow:0px 4px 6px 0px rgba(249, 123, 31, 0.10);}
         .select button{width:343px;height:48px;bottom:16px;left:16px;z-index:1;cursor:pointer;background:transparent;border: 0;}
         
         /* 로딩 */
@@ -179,7 +180,7 @@
         <div class="select">
             <a href="./a-main.html"></a>
             <img src="./images/a-images/event/select.png" alt="">
-            <a href=""></a>
+            <a href="#" class="soup" onclick="this.classList.add('on')"></a>
             <button></button>
         </div>
         <!-- 1번 노출 -->
@@ -247,6 +248,7 @@
                 document.querySelector(".pop").style.display = 'block';
             },1000)
         })
+
     </script>
 </body>
 </html>
