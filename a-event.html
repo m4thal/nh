@@ -3,252 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./res/a-base.css">
-    <title>A 이벤트 한 상 차리기</title>
+    <title>나만의 채소 키우기</title>
+    <link rel="stylesheet" href="./res/swiper-bundle.min.css">
+    <script src="./res/swiper-bundle.min.js"></script>
+    <script src="./res/jquery-3.6.4.min.js"></script>
     <style>
-        body *{font-family:'Pretendard-Medium', sans-serif;}
-        /* 인트로 */
-        .intro{position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: intro 1s 0.5s ease-in forwards;}
-        @keyframes intro{0%{opacity: 1;}100%{opacity: 0;}}
-        
-        /* 셀렉 */
-        .select{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
-        .select > * {position:absolute;}
-        .select a{width:20px;height:20px;z-index:1;}
-        .select a:first-of-type{top:60px;left:20px;}
-        .select a.soup{width:99px;height:129px;top:178px;left:24px;box-sizing:border-box;}
-        .select a.soup.on{border:2px solid #FF6A00;border-radius:12px;box-shadow:0px 4px 6px 0px rgba(249, 123, 31, 0.10);}
-        .select button{width:343px;height:48px;bottom:16px;left:16px;z-index:1;cursor:pointer;background:transparent;border: 0;}
-        
-        /* 로딩 */
-        .loding_wrap{position:absolute;top:0;left:0;width:100%;height:100%;background:url(./images/a-images/event/loding.png) no-repeat;background-size:contain;display:none;z-index:100;}
-        .center_lo{width:50%;margin:0 auto;text-align:center;position:absolute;top:415px;left:50%;transform:translate(-50%, -50%);z-index:100;}
-        .dot{display:inline-block;width:8px;height:8px;background-color:gray;border-radius:50%;background-color:#ff6a00;}
-        .dot:nth-child(1){animation:loding1 1.6s infinite;}
-        .dot:nth-child(2){animation:loding2 1.6s infinite;}
-        .dot:nth-child(3){animation:loding3 1.6s infinite;}
-        @keyframes loding1 {0%,50%{opacity: 1;transform: translateY(0px)}25%{opacity: 0.7;transform: translateY(-3px)}}
-        @keyframes loding2 {25%,100%{opacity: 1;transform: translateY(0px)}45%{opacity: 0.7;transform: translateY(-3px)}}
-        @keyframes loding3 {50%,100%{opacity: 1;transform: translateY(0px)}75%{opacity: 0.7;transform: translateY(-3px)}}
-        
-        .progress_bar{position:absolute;top:200px;left:50%;transform:translateX(-50%);width:247px;height:12px;background-color:#fff;border-radius:10px;}
-        .progress_bar div{width: 0; height:100%;background:linear-gradient(90deg, #FF6A00 0%, #FF3B29 100%);border-radius:10px; transition: all .5s;}
-        .progress_bar div::after{content: "";position:absolute;height:38px;top:-15px;left:-15px;display:inline-block;width: 32px;background: url(./images/a-images/event/character.png) no-repeat;background-size:contain;}
-        .cooking.on .progress_bar div{ animation:progressBar 3s 2s ease-in-out forwards;}
-        .cooking.on .progress_bar div::after{animation:character1 3s 2s ease-in-out forwards, character2 .7s 2.3s ease-in-out infinite;}
-        .cooking.on .progress_bar div.on{animation:finish1 1.5s ease-in-out forwards;}
-        .cooking.on .progress_bar div.on::after{animation:finish2 1.5s ease-in-out forwards, character2 .7s ease-in-out infinite;;}
-        @keyframes progressBar {0%{width:0;}100%{width:80%;}}
-        @keyframes character1 {0%{left:-15px;}100%{left:175px;}}
-        @keyframes character2 {0%,100%{transform: scale(1.2);}100%{transform:scale(1);}}
-        @keyframes finish1{0%{width:80%;}100%{width:100%}}
-        @keyframes finish2{0%{left:175px;}100%{left:225px}}
-        .number{position:absolute;top:234px;left:50%;transform:translateX(-50%);color:#FF5638;font-size:16px;font-weight:700;background-color:#fff;padding:4px 11.5px;border-radius:20px;}
-        .number .count{display:inline-block;}
-
-        /* 조리 start */
-        .cooking{position:absolute;top:0;left:0;width:100%;height:100%;background: url(./images/a-images/event/cooking.png) no-repeat;width:100%;background-size:contain;height:100%;display:none; z-index: 20;}
-        .txt{position:absolute;width:221px;top:134px;left:50%;transform:translateX(-50%);opacity:0;transition:all .7s;}
-        .cooking.on .txt{animation:txt .7s 3s ease-in-out forwards;}
-        @keyframes txt{100%{opacity:1;top:124px;}}
-        
-        /* 탕보다 인덱스 낮은애들 3, 탕보다 높은애들9, 탕5  */
-        .cooking .pot{position:absolute;width:278px;top:349px;left:48px;}
-        .cooking .pot img:last-of-type{position:absolute;width:264px;top:2px;left:7px;z-index:2;} /* 탕 */
-        .cooking .vegetable > img{position:absolute;}
-
-        /* 야채 */
-        .cooking .vegetable img:nth-of-type(1){width:90px;top:331px;left:67px;z-index:9;opacity:0;}
-        .cooking.on .vegetable img:nth-of-type(1){animation:vegetable1 2s ease-in-out forwards;}
-        .cooking .vegetable img:nth-of-type(2){height:140px;top:317px;left:233px;z-index:9;opacity:0;}
-        .cooking.on .vegetable img:nth-of-type(2){animation:vegetable2 1.5s ease-in-out forwards;}
-        .cooking .vegetable img:nth-of-type(3){width:33px;top:349px;left:151px;z-index:9;opacity:0;}
-        .cooking.on .vegetable img:nth-of-type(3){animation:vegetable3 2s cubic-bezier(0.1, 0.82, 0.5, 1) forwards;}
-        .cooking .vegetable img:nth-of-type(4){width:72px;top:326px;left:167px;z-index:9; opacity: 0;}
-        .cooking.on .vegetable img:nth-of-type(4){animation:vegetable4 2s cubic-bezier(0.1, 0.82, 0.5, 1) forwards;}
-        .cooking .vegetable img:nth-of-type(5){width:24px;top:349px;left:52px; opacity: 0;}
-        .cooking.on .vegetable img:nth-of-type(5){animation:vegetable5 2s 1s cubic-bezier(0.1, 0.82, 0.3, 1) forwards;}
-        .cooking .vegetable img:nth-of-type(6){width:16px;top:346px;left:123px; opacity: 0;}
-        .cooking.on .vegetable img:nth-of-type(6){animation:vegetable6 2s 1s cubic-bezier(0.1, 0.82, 0.3, 1) forwards;}
-        .cooking .vegetable img:nth-of-type(7){width:142px;top:388px;left:93px;z-index:9;opacity:0;transition:all 0.3s;}
-        .cooking.on .vegetable img:nth-of-type(7){animation:vegetable8 1s 2.5s forwards ,vegetable7 4s 5s cubic-bezier(0.1, 0.82, 0.3, 1) infinite;}
-        .cooking .vegetable img:nth-of-type(8){width:162px;top:415px;left:117px;z-index:12;opacity:0;transition:all 0.7s;}
-        .cooking.on .vegetable img:nth-of-type(8){animation:vegetable8 3s 2s cubic-bezier(0.1, 0.82, 0.3, 1) forwards;}
-        .cooking .vegetable img:nth-of-type(9){width:52px;top:391px;left:219px; opacity:0;z-index:5;}
-        .cooking.on .vegetable img:nth-of-type(9){animation:vegetable9 2s ease-in-out forwards;}
-        .cooking .vegetable img:nth-of-type(10){width:44px;top:396px;left:245px;opacity:0;z-index:10;}
-        .cooking.on .vegetable img:nth-of-type(10){animation:vegetable10 2s ease-in-out forwards;}
-        @keyframes vegetable1{0%{opacity:0;top:90px;transform:rotate(0deg);}100%{opacity:1;top:331px;transform:rotate(365deg);}}
-        @keyframes vegetable2{0%{opacity:0;top:77px;transform:rotate(0deg);}100%{opacity:1;top:317px;transform:rotate(365deg);}}
-        @keyframes vegetable3{0%{opacity:0;top:77px;transform:rotate(0deg);}100%{opacity:1;top:349px;transform:rotate(365deg);}}
-        @keyframes vegetable4{0%{opacity:0;top:77px;transform:rotate(0deg);}100%{opacity:1;top:326px;transform:rotate(365deg);}}
-        @keyframes vegetable5{0%{opacity:0;top:77px;transform:rotate(0deg);}100%{opacity:1;top:349px;transform:rotate(365deg);}}
-        @keyframes vegetable6{0%{opacity:0;top:77px;transform:rotate(0deg);}100%{opacity:1;top:346px;transform:rotate(365deg);}}
-        @keyframes vegetable7{0%,100%{opacity:1;}50%{opacity:0.5;}}
-        @keyframes vegetable8{0%{opacity:0;}100%{opacity:1;}}
-        @keyframes vegetable9{0%{opacity:0;top:90px;transform:rotate(0deg);}100%{opacity:1;top:391px;transform:rotate(365deg);}}
-        @keyframes vegetable10{0%{opacity:0;top:90px;transform:rotate(0deg);}100%{opacity:1;top:396px;transform:rotate(365deg);}}
-        /* 연기 */
-        .cooking .vegetable img:nth-of-type(11){width:22px;top:348px;left:133px;z-index:30;animation: smoke1 5s ease-in-out infinite;}
-        .cooking .vegetable img:nth-of-type(12){width:38px;top:308px;left:173px;z-index:30;animation: smoke2 5s ease-in infinite;}
-        .cooking .vegetable img:nth-of-type(13){width:18px;top:358px;left:223px;z-index:30;animation: smoke3 5s ease-in-out infinite;}
-        @keyframes smoke1{0%{opacity:0;}100%{top:248px;left:120px;width:30px;opacity:1;}}
-        @keyframes smoke2{0%{opacity:0;}90%{width:30px;opacity:0;top:250px;left:160px;opacity:.7;}100%{width:30px;opacity:0;top:250px;left:160px;opacity:0;}}
-        @keyframes smoke3{0%{opacity:0;}100%{width:25px;top:330px;}}
-
-        /* 불 */
-        .cooking .fire{position:absolute;top:0;left:0;width:100%;}
-        .cooking .fire > img{position:absolute;transition:all .5s;}
-        .cooking .fire img:nth-of-type(1){width:14px;top:557px;left:124px;animation:fireStart .7s .5s ease-in-out forwards, fire1 2s 2s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(2){width:12px;top:555px;left:135px;animation:fireStart .7s .3s ease-in-out forwards, fire2 2s 3s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(3){width:12px;top:558px;left:151px;animation:fireStart .7s .5s ease-in-out forwards, fire3 2s 2s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(4){width:16px;top:553px;left:167px;animation:fireStart .7s .3s ease-in-out forwards, fire4 2s 3s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(5){width:16px;top:555px;left:189px;animation:fireStart .7s .5s ease-in-out forwards, fire5 2s 3s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(6){width:14px;top:553px;left:209px;animation:fireStart .7s .3s ease-in-out forwards, fire6 2s 2s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(7){width:10px;top:555px;left:225px;animation:fireStart .7s .5s ease-in-out forwards, fire7 2s 3s ease-in-out infinite;opacity:0;}
-        .cooking .fire img:nth-of-type(8){width:16px;top:558px;left:232px;animation:fireStart .7s .5s ease-in-out forwards, fire8 2s 2s ease-in-out infinite;opacity:0;}
-        @keyframes fireStart{0%{opacity:0;}50%{opacity:1;width:5px;margin-top:7px;}100%{opacity:1;margin-top:0;}}
-        @keyframes fire1{0%,100%{transform:scale(1);top:557px;left:124px;}50%{transform:scale(2);top:552px; left:120px;}}
-        @keyframes fire2{0%,100%{transform:scale(1);top:555px;}50%{transform:scale(1.7);top:548px;}}
-        @keyframes fire3{0%,100%{transform:scale(1);top:558px;}50%{transform:scale(1.7);top:551px;}}
-        @keyframes fire4{0%,100%{transform:scale(1);top:553px;}50%{transform:scale(1.7);top:546px;}}
-        @keyframes fire5{0%,100%{transform:scale(1);top:555px;}50%{transform:scale(1.7);top:548px;}}
-        @keyframes fire6{0%,100%{transform:scale(1);top:553px;}50%{transform:scale(1.7);top:546px;}}
-        @keyframes fire7{0%,100%{transform:scale(1);top:555px;}50%{transform:scale(1.7);top:548px;}}
-        @keyframes fire8{0%,100%{transform:scale(1);top:558px;left:232px;}50%{transform:scale(2);top:553px; left:236px;}}
-        .finish_btn{position:absolute;top:350px;left:50px;background:transparent;border:0;width:280px;height:230px;cursor:pointer;z-index:100;}
-
-        /* 조리 end */
-        .pop{position:absolute;top:0;left:0;width:376px;height:100%; display: none;z-index: 100;}
-        .pop a{position:absolute;width:277px;height:50px;bottom:176px;right:49px;}
+        *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
+        html{font-size:62.5%;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
+        body{height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;background:#343A3F;color:#333;margin:0;padding:0;border:0;}
+        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:812px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;border-radius:32px }
+        .container::-webkit-scrollbar{display:none;}
+        .img_wrap {position:relative}
+        .img_wrap img {display:block;width:100%}
+        .bg {width:100%}
+        .motion1 {position:absolute;top:104px;left:48px;width:289px !important;margin:0 auto; z-index:1;animation:fadeIn 2s forwards;opacity:0}
+        .motion2 {position:absolute;top:286px;width:300.47px !important;left:57px;z-index:2;opacity:0;animation:fadeIn 2s forwards;animation-delay:1s;}
+        .motion3 {position:absolute;left:58.5px;bottom:100px;width:258px !important;z-index:3;opacity:0;animation:fadeIn 1.5s forwards;animation-delay:1.5s;}
+        .bt {position:absolute;left:58.5px;bottom:100px;width:258px;height:70px;z-index:5;}
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
     </style>
-</head> 
+</head>
 <body>
-    <div class="container">
-        <!-- 4번 노출 -->
-        <div class="cooking">
-            <div class="txt">
-                <img src="./images/a-images/event/txt.png" alt="">
-            </div>
-            <div class="progress_bar">
-                <div></div>
-            </div>
-            <div class="number">
-                <div class="count">0%</div> 완성중
-            </div>
-
-            <div class="pot">
-                <img src="./images/a-images/event/pot1.png" alt="">
-                <img src="./images/a-images/event/pot3.png" alt="">
-            </div>
-            <div class="vegetable">
-                <img src="./images/a-images/event/vegetable1.png" alt="">
-                <img src="./images/a-images/event/vegetable2.png" alt="">
-                <img src="./images/a-images/event/vegetable3.png" alt="">
-                <img src="./images/a-images/event/vegetable4.png" alt="">
-                <img src="./images/a-images/event/vegetable5.png" alt="">
-                <img src="./images/a-images/event/vegetable6.png" alt="">
-                <img src="./images/a-images/event/vegetable7.png" alt="">
-                <img src="./images/a-images/event/vegetable8.png" alt="">
-                <img src="./images/a-images/event/vegetable9.png" alt="">
-                <img src="./images/a-images/event/vegetable10.png" alt="">
-                <img src="./images/a-images/event/smoke1.png" alt="">
-                <img src="./images/a-images/event/smoke2.png" alt="">
-                <img src="./images/a-images/event/smoke3.png" alt="">
-            </div>
-            <div class="fire">
-                <img src="./images/a-images/event/fire1.svg" alt="">
-                <img src="./images/a-images/event/fire2.svg" alt="">
-                <img src="./images/a-images/event/fire3.svg" alt="">
-                <img src="./images/a-images/event/fire4.svg" alt="">
-                <img src="./images/a-images/event/fire5.svg" alt="">
-                <img src="./images/a-images/event/fire6.svg" alt="">
-                <img src="./images/a-images/event/fire7.svg" alt="">
-                <img src="./images/a-images/event/fire8.svg" alt="">
-            </div>
-            <button class="finish_btn"></button>
+    <div id="wrap" class="container event">
+        <div class="img_wrap">
+            <img src="./images/b_event/b_event_txt1.png" alt="" class="motion1">
+            <img src="./images/b_event/b_event_img1.png" alt="" class="motion2">
+            <img src="./images/b_event/b_event_bt1.png" alt="" class="motion3">
+            <img src="./images/b_event/b_event_bg1.jpg" alt="bg">
+            <a href="b-event2.html" class="bt"></a>
         </div>
-        <!-- 3번 노출 -->
-        <a href="#" class="loding_wrap">
-            <div class="center_lo">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </a>
-        <!-- 2번 노출 -->
-        <div class="select">
-            <a href="./a-main.html"></a>
-            <img src="./images/a-images/event/select.png" alt="">
-            <a href="#" class="soup" onclick="this.classList.add('on')"></a>
-            <button></button>
-        </div>
-        <!-- 1번 노출 -->
-        <div class="intro">
-            <img src="./images/a-images/event/intro.png" alt="">
-        </div>
-        <div class="pop">
-            <img src="./images/a-images/event/finish.png" alt="">
-            <a href="./a-main.html"></a>
-        </div>
+       
     </div>
     <script>
-        const select = document.querySelector(".select");
-        const cooking = document.querySelector(".cooking");
-        const intro = document.querySelector(".intro");
-        const lodingWrap = document.querySelector(".loding_wrap");
-        const finish = document.querySelector(".finish_btn");
-
-        document.querySelector(".select button").addEventListener('click', function(){
-            select.style.display = "none";
-            intro.style.display = "none";
-            lodingWrap.style.display = "block";
-        })
-        lodingWrap.addEventListener('click', function(){
-            lodingWrap.style.display = "none";
-            cooking.style.display = "block"
-            cooking.classList.add('on');
-            setTimeout( function(){
-                increaseNumber(); 
-            },2500);
-
-        })
-
-        let currentNumber = 0 ;
-        const targetNumber = 80 ;
-        const incrementSpeed = 20;
-        function increaseNumber() {
-            if (currentNumber < targetNumber) {
-                currentNumber++;
-                document.querySelector('.count').innerText = currentNumber  + "%";
-                setTimeout(increaseNumber, incrementSpeed);
-            } else {
-                document.querySelector('.count').innerText = targetNumber + "%"; // 마지막 숫자
-            }
-        }
-
-        /* test */
-        let currentNumber1 = 80 ;
-        const targetNumber1 = 100 ;
-        const incrementSpeed1 = 40;
-        const progress_bar = document.querySelector(".progress_bar div")
-        function increaseNumber1() {
-            if (currentNumber1 < targetNumber1) {
-                currentNumber1++;
-                document.querySelector('.count').innerText = currentNumber1  + "%";
-                setTimeout(increaseNumber1, incrementSpeed1);
-            } else {
-                document.querySelector('.count').innerText = targetNumber1 + "%"; // 마지막 숫자
-            }
-        }
-        finish.addEventListener('click', function(){
-            increaseNumber1();
-            progress_bar.classList.add("on")
-            setTimeout( function(){
-                document.querySelector(".pop").style.display = 'block';
-            },1000)
-        })
-
+       
     </script>
+    </html>
 </body>
-</html>
