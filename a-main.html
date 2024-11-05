@@ -44,6 +44,7 @@
         .linkbox_r{display: flex;justify-content: flex-start;}
         .swiper-slide a{display:block; width: 50px;height: 31px;border-radius: 10px;font-family: "NotoSansCJKkr";color:#fff;font-size: 12px;font-weight: 500;line-height: 18px; /* 150% */letter-spacing: -0.5px; padding:6px 14px 7px 14px}
         .swiper-slide .charge{background:rgba(255,255,255,0.4);}
+        .swiper-slide .charge#nobtn{cursor:default;}
         .swiper-slide .payment{background: #121619; margin-left:8px;}
         .swiper-slide .cardlink{display:block; width:200px; height:82px;/*background:red;*/ }
         .swiper-slide img {display: block;width: 100%;height: 100%;object-fit: cover;}
@@ -60,6 +61,7 @@
         .card-top img{width:293px; height:330px; display:block; margin:0px auto;}
         .card-bottom img#card_txt1{margin-bottom:16px;}
         .btncharge{position:absolute;top:316px; left:98px; width:66px; height:40px; background:transparent; border-radius:5px; }
+        .btncharge#transit{left:47px;}
         .pop_inner::after {content: "";position: absolute;bottom: 0;left: 0;width: 375px;height: 21px;background: url(./images/a-images/home_indicator.png) 0 0 / 100%;}
 
         .up{opacity:1;}
@@ -102,7 +104,7 @@
             </div>
             <div class="cont_btm">
                 <img src="./images/a-images/main/main_btm1.png" alt="" id="btm1">
-                <img src="./images/a-images/main/main_btm_map.png" alt="" id="btm_map">
+                <a href="a-map.html" title="맵페이지로이동"><img src="./images/a-images/main/main_btm_map.png" alt="" id="btm_map"></a>
                 <img src="./images/a-images/main/main_btm2.png" alt="" id="btm2">
             </div>
             <div class="" id="slide_box">
@@ -113,7 +115,7 @@
                             <div class="linkbox">
                                 <a class="cardlink" href="javascript:slideOpen('pop1')" title=""></a>
                                 <div class="linkbox_r">
-                                    <a class="charge" href="#none" title="">충전</a>
+                                    <a class="charge" href="#none" title="" id="nobtn">충전</a>
                                     <a class="payment" href="a-QRpay.html" title="">결제</a>
                                 </div>
                             </div>
@@ -154,15 +156,14 @@
                 <div class="pop_indicator"></div>
                 <div class="card-top">
                     <img src="./images/a-images/main/card_img2.png" alt="">
-                    <a class="btncharge" href="a-charge.html" title="충전"></a>
+                    <a class="btncharge" id="transit" href="a-charge.html" title="충전"></a>
                 </div>
                 <div class="card-bottom">
                     <img src="./images/a-images/main/card_txt3.png" alt="이용내역" id="card_txt1">
                 </div>
             </div>
         </div>
-
-
+    </div>
 
         <script src="./res/swiper-bundle.min.js"></script>
         <script src="./res/jquery-3.6.4.min.js"></script>
@@ -249,6 +250,6 @@
               
             
         </script>
-    </div>
+    
 </body>
 </html> 
