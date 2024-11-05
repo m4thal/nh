@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./res/swiper-bundle.min.css" />
+    <script src="./res/swiper-bundle.min.js"></script>
+    <script src="./res/jquery-3.6.4.min.js"></script>
+    <title>B 주변</title>
+    <style>
+        *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
+        html{font-size:62.5%;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
+        body{position:relative;height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;background:#000;color:#333;margin:0;padding:0;border:0;background:#000}
+        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:812px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden}
+        .container::-webkit-scrollbar{display:none;}
+        .cont {height:calc(812px - 188px);overflow-y:scroll;}
+        .cont::-webkit-scrollbar{display:none;}
+        .header {position:fixed;top:0;left:0;right:0;height:100px;}
+        .header img {width:100%}
+        .bottom {position:fixed;bottom:0;left:0;right:0;height:88px;}
+        .bottom img {width:100%;line-height:0;vertical-align:bottom}
+        .img_wrap {position:relative}
+        .img_wrap img {display:block;width:100%}
+        .golink1 {position:absolute;bottom:27px;left:20px;width:70px;height:60px;}
+        .golink2 {position:absolute;bottom:27px;left:107px;width:70px;height:60px;}
+        .golink3 {position:absolute;bottom:27px;left:195px;width:70px;height:60px;}
+    </style>
+</head>
+<body>
+    <div class="container b-wallet">
+        <div class="header"><img src="./images/b_img/aroundheader.png" alt=""></div>
+        <div class="cont">
+            <div class="img_wrap">
+                <img src="./images/b_img/aroundimg1.jpg" alt="">
+                <img src="./images/b_img/aroundimg2.jpg" alt="">
+            </div> 
+        </div>
+        <div class="bottom">
+            <a href="b-my.html" class="golink1"></a>
+            <a href="b-wallet.html" class="golink2"></a>
+            <a href="b-around.html" class="golink3"></a>
+            <img src="./images/b_img/bottom3.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
