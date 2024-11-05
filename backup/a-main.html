@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./res/a-base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./res/swiper-bundle.min.css">
+    <script src="./res/swiper-bundle.min.js"></script>
+    <script src="./res/jquery-3.6.4.min.js"></script>
+    <title>A 메인</title>
+
+    <style>
+        img{width:100%;}
+        button{background-color:transparent;outline:none;border:none;}
+        .blind{border: 0;clip: rect(0 0 0 0);clip-path: inset(50%); width: 1px;height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;white-space: nowrap;}
+        
+
+        header .h_inner{display:flex;justify-content: space-between; padding:15.85px 22px 5px 19px}
+        header .h_left{width: 160px;height: 24px;}
+        header .icon a{display:inline-block;width:24px; height:24px;}
+        header #btn_en{background:url('./images/a-images/main/icon_en.png') no-repeat center / 24px; margin-right:15px;}
+        header #btn_alert{background:url('./images/a-images/main/icon_alert.png') no-repeat center / 24px; cursor:default;}
+
+        .contents{background:#F3F6FB;width:100%;height:634px; overflow-x:hidden;overflow-y:scroll;-ms-overflow-style: none; /* 인터넷 익스플로러 */scrollbar-width: none; /* 파이어폭스 */padding-bottom:89px;}
+        .contents::-webkit-scrollbar {display: none;}
+        .cont_top > .top_bg{margin:0px auto; width:100%; padding:23px 20px 0 20px; background:linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 89.84%);
+        }
+        .cont_top img#top1{width:323px; height:178px;margin-bottom:10px;}
+        .cont_top img#top2{width:337px; height:67px;margin-bottom:31px;}
+        .cont_top img#top3{width:336px; height:120px;margin-bottom:32px;}
+        
+        .cont_mid{padding-left:20px; margin-bottom:33px; position: relative;}
+        .cont_mid #iconmid{position:absolute;top:24px;right:20.34px; width:26.7px; height:26px;}
+        .cont_btm{margin:0px auto; width:100%; padding:0 20px;}
+        .cont_btm img#btm1{width:335px; height:22px;margin-bottom:10px;}
+        .cont_btm img#btm_map{width:335px; height:183px;margin-bottom:32px;}
+        .cont_btm img#btm2{width:335px; height:74px;margin-bottom:32px;}
+        
+        /*카드상세 슬라이드*/
+        #slide_box{position:fixed;bottom:86px;left:0;height:87px; width:100%;background:transparent; transition:all 0.3s;}
+        .swiper {width: 100%;height: 100%}
+        .swiper-slide {text-align: center;font-size: 18px;background: transparent;display: flex;justify-content: center;align-items: center; position:relative;}
+        .swiper-slide .linkbox{padding:0 20px;width:100%;position:absolute;top:2px; left:0px;display: flex;justify-content: space-between;align-items: center;z-index:1;}
+        .linkbox_r{display: flex;justify-content: flex-start;}
+        .swiper-slide a{display:block; width: 50px;height: 31px;border-radius: 10px;font-family: "NotoSansCJKkr";color:#fff;font-size: 12px;font-weight: 500;line-height: 18px; /* 150% */letter-spacing: -0.5px; padding:6px 14px 7px 14px}
+        .swiper-slide .charge{background:rgba(255,255,255,0.4);}
+        .swiper-slide .charge#nobtn{cursor:default;}
+        .swiper-slide .payment{background: #121619; margin-left:8px;}
+        .swiper-slide .cardlink{display:block; width:200px; height:82px;/*background:red;*/ }
+        .swiper-slide img {display: block;width: 100%;height: 100%;object-fit: cover;}
+
+        .btm{position:fixed;bottom:0;left:0;}
+        .btm #btm3{width:100%; height:86px;}
+
+        /* 팝업 */
+        .container.dim:after{content:"";display:block;width:100%; height:100%;background-color:rgba(0, 0, 0, 0.60);position:fixed;top:0; left:0;z-index:1;}
+        .pop_wrap{position:fixed;bottom:0;left:0;z-index:2;width:100%; height:0%;/*background-color:rgba(0, 0, 0, 0.60);*/transition:all 0.5s;overflow:hidden;}
+        .pop_inner{position:relative; background-color:#fff;height:calc(100% - 100px);margin-top:100px;padding:0 20px; border-radius: 20px 20px 0px 0px;}
+        .pop_indicator{position:absolute;top:12px;left:50%;transform:translateX(-50%);width: 40px;height: 4px;border-radius: 100px;background-color:#D6DBE1;}
+        .card-top{padding:48px 0 32px 0; position:relative;}
+        .card-top img{width:293px; height:330px; display:block; margin:0px auto;}
+        .card-bottom img#card_txt1{margin-bottom:16px;}
+        .btncharge{position:absolute;top:316px; left:98px; width:66px; height:40px; background:transparent; border-radius:5px; }
+        .btncharge#transit{left:47px;}
+        .pop_inner::after {content: "";position: absolute;bottom: 0;left: 0;width: 375px;height: 21px;background: url(./images/a-images/home_indicator.png) 0 0 / 100%;}
+
+        .up{opacity:1;}
+        .down{height:0 !important;opacity:0;}
+        
+
+        .show{height:100%;}
+        .hide{height:0;}
+
+    </style>
+
+</head>
+
+
+<body>
+    <div id="wrap" class="container">
+        <div class="top_bar"><img src="./images/a-images/status_bar.png" alt=""></div>
+        <header>
+            <div class="h_inner">
+                <div class="h_left">
+                    <img src="./images/a-images/main/h_left.png" alt="">
+                </div>
+                <div class="icon">
+                    <a href="a-main-en.html" id="btn_en"><span class="blind">메인영문버전으로이동</span></a>
+                    <a href="#none" id="btn_alert"><span class="blind"></span></a>
+                </div>
+            </div>
+        </header>
+        <div class="contents">
+            <div class="cont_top">
+                <div class="top_bg">
+                    <img src="./images/a-images/main/main_top1.png" alt="" id="top1">
+                    <img src="./images/a-images/main/main_top2.png" alt="" id="top2">
+                    <img src="./images/a-images/main/main_top3.png" alt="" id="top3">
+                </div>
+            </div>
+            <div class="cont_mid">
+                <img src="./images/a-images/main/main_mid.png" alt="">
+                <img src="./images/a-images/main/icon_mid.png" alt="" id="iconmid">
+            </div>
+            <div class="cont_btm">
+                <img src="./images/a-images/main/main_btm1.png" alt="" id="btm1">
+                <a href="a-map.html" title="맵페이지로이동"><img src="./images/a-images/main/main_btm_map.png" alt="" id="btm_map"></a>
+                <img src="./images/a-images/main/main_btm2.png" alt="" id="btm2">
+            </div>
+            <div class="" id="slide_box">
+                <div class="swiper cardSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./images/a-images/main/main_slide.png" alt="" id="">
+                            <div class="linkbox">
+                                <a class="cardlink" href="javascript:slideOpen('pop1')" title=""></a>
+                                <div class="linkbox_r">
+                                    <a class="charge" href="#none" title="" id="nobtn">충전</a>
+                                    <a class="payment" href="a-QRpay.html" title="">결제</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/a-images/main/main_slide2.png" alt="" id="">
+                            <div class="linkbox">
+                                <a class="cardlink" href="javascript:slideOpen('pop2');" title=""></a>
+                                <div class="linkbox_r">
+                                    <a class="charge" href="a-charge.html" title="">충전</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btm">
+                <img src="./images/a-images/main/main_btm3.png" alt="" id="btm3">
+            </div>
+        </div>
+
+        <!-- 팝업영역 -->
+        <div class="pop_wrap" id="pop1">
+            <div class="pop_inner">
+                <div class="pop_indicator"></div>
+                <div class="card-top">
+                    <img src="./images/a-images/main/card_img.png" alt="">
+                    <a class="btncharge" href="a-charge.html" title="충전"></a>
+                </div>
+                <div class="card-bottom">
+                    <img src="./images/a-images/main/card_txt1.png" alt="이용내역" id="card_txt1">
+                    <img src="./images/a-images/main/card_txt2.png" alt="tax refund내역">
+                </div>
+            </div>
+        </div>
+        <div class="pop_wrap" id="pop2">
+            <div class="pop_inner"> 
+                <div class="pop_indicator"></div>
+                <div class="card-top">
+                    <img src="./images/a-images/main/card_img2.png" alt="">
+                    <a class="btncharge" id="transit" href="a-charge.html" title="충전"></a>
+                </div>
+                <div class="card-bottom">
+                    <img src="./images/a-images/main/card_txt3.png" alt="이용내역" id="card_txt1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script src="./res/swiper-bundle.min.js"></script>
+        <script src="./res/jquery-3.6.4.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+            //스와이퍼 슬라이드
+            var swiper = new Swiper(".cardSwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+
+            //팝업이벤트
+            $(function(){
+                //팝업 기본값 안보이게
+                // $('.pop_wrap').hide();
+                // 외부영역 클릭시 닫기
+                $(document).mouseup(function (e){
+                    var LayerPopup = $(".pop_wrap");
+                    
+                    if(LayerPopup.has(e.target).length === 0){
+                        LayerPopup.removeClass('show').addClass('hide');
+                        $(".container").removeClass('dim');
+                    }
+                });
+                
+                
+            });
+
+            function slideOpen(a){
+                $('#'+a).removeClass('hide').addClass('show');
+                $(".container").addClass('dim');
+            }
+
+
+            //스크롤 이벤트
+            $(function(){
+                var scrolling; //스크롤하는 중인지 감지
+                let lastScrollTop = 0;
+                const delta = 0;
+                
+                    $('.contents').scroll(function(event){
+                        if (!scrolling) {
+                    
+                            const st = $(this).scrollTop(); //// 접근하기 쉽게 현재 스크롤의 위치를 저장한다.
+                            if(Math.abs(lastScrollTop - st) <= delta) return; //// 설정한 delta 값보다 더 스크롤되었는지를 확인한다.
+                            if((st > lastScrollTop) && (lastScrollTop > 0)) { //더 스크롤되었는지 확인하고 스크롤의 방향이 위인지 아래인지를 확인한다.
+                                // $('#slide_box').removeClass('up').addClass('down'); 
+                                $('#slide_box').removeClass('up').addClass('down'); //// Scroll Down
+
+                                
+                                if($('#slide_box').hasClass('down') ==true){
+                                    clearTimeout(scrolling);
+                                    scrolling = setTimeout(() => {
+                                        // console.log('stop');
+                                        $('#slide_box').removeClass().addClass('up');
+
+                                        
+                                    }, 350);
+                                }
+
+                            }else {
+                                $('#slide_box').removeClass('down'); //// Scroll Up
+                            };
+
+                            // lastScrollTop 에 현재 스크롤위치를 지정한다.
+                            lastScrollTop = st;
+                            scrolling = undefined;
+                            // console.log('start scrolling!');
+                            console.log(scrolling);
+                    }
+
+
+                });
+                    
+            });
+
+            
+
+
+                
+              
+            
+        </script>
+    
+</body>
+</html> 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./res/a-base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./res/swiper-bundle.min.css">
+    <script src="./res/swiper-bundle.min.js"></script>
+    <script src="./res/jquery-3.6.4.min.js"></script>
+    <title>QR결제</title>
+</head>
+
+<style>
+    .contents{position: relative;}
+    .qr_border{clip-path: path('M144,5c6.07,0,11,4.93,11,11v128c0,6.07-4.93,11-11,11H16c-6.07,0-11-4.93-11-11V16c0-6.07,4.93-11,11-11h128M144,0H16C7.16,0,0,7.16,0,16v128c0,8.84,7.16,16,16,16h128c8.84,0,16-7.16,16-16V16c0-8.84-7.16-16-16-16h0Z'); width: 160px; height:160px; position: relative; left: 50%; margin-left: -80px; top: 234px;}
+    .qr_border div{ background: repeating-conic-gradient(#14229f 7%,#87BBF5 17%,#0F962F 30%, #D3F2DA 37%, #E4F9E9 43%, #368DED 52%, #14229F 56%); width: 1000px; height:1000px; animation: rotate 5s linear infinite;  background-size: cover; background-repeat: none; background-position: center center; position: absolute; top: 50%; left: 50%; margin-left: -500px; margin-top: -500px; ;}
+    @keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    }
+    .contents img{position: absolute; top: 0;}
+</style>
+
+<body>
+    <div id="wrap" class="container">
+        <div class="top_bar"><img src="./res/a-images/status_bar.png" alt=""></div>
+        <div class="contents">
+            <div class="qr_border">
+                <div></div>
+            </div>
+            <img src="./res/a-images/qr/cont_pay.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
