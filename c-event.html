@@ -158,7 +158,7 @@
                         <img src="./images/Ctype/benefit/fishing_line.png" alt="" style="height: 340px;">
                     </div>
                     <div class="fishing_hook">
-                        <img src="./images/Ctype/benefit/fishing_hook.png" alt="" style="">
+                        <img src="./images/Ctype/benefit/fishing_hook.png" alt=""">
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                     <img src="./images/Ctype/benefit/bg2.png" alt="" >
                 </div>
                 <div class="crucian_carp">
-                    <img src="./images/Ctype/benefit/crucian_carp.png" alt="" style="">
+                    <img src="./images/Ctype/benefit/crucian_carp.png" alt="">
                 </div>
                 <img src="./images/Ctype/benefit/coin1.png" class="coin coin1" alt="">
                 <img src="./images/Ctype/benefit/coin2.png" class="coin coin2" alt="">
@@ -190,31 +190,6 @@
             bg2.classList.add('on');
             bg3.classList.add('on');
         }
-
-
-
-        /* header 넣기 */
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.createElement('header');
-            const img = document.createElement('img');
-            const container = document.querySelector('.container');
-            
-            if (container) {
-                if (container.classList.contains('type')) {
-                    img.src = './images/header-white.png'; // type 클래스가 있으면 이 경로 사용
-                } else {
-                    img.src = './images/header.png';
-                }
-                
-                img.alt = '';
-                header.appendChild(img);
-                
-            // container의 첫 번째 자식 요소로 header 요소를 추가
-                container.insertBefore(header, container.firstChild);
-            } else {
-                console.error('Container element with class "container" not found.');
-            }
-        });
     </script>
 </body>
 </html>
