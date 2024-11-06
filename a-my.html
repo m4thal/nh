@@ -19,7 +19,8 @@
         .header img {width:100%}
         .bottom {position:fixed;bottom:0;left:0;right:0;height:88px;border-top-left-radius: 32px;border-top-right-radius: 32px;z-index:10}
         .bottom img {width:100%;line-height:0;vertical-align:bottom;border-top-left-radius:32px;border-top-right-radius:32px;}
-        .img_wrap {position:relative}
+        .img_wrap {position:relative;opacity: 0;transform: translateY(20px);transition: opacity 1s ease, transform 1s ease;}
+        .img_wrap.show {opacity: 1;transform: translateY(0);}
         .img_wrap img {display:block;width:100%}
         .golink1 {position:absolute;bottom:27px;left:20px;width:70px;height:60px;}
         .golink2 {position:absolute;bottom:27px;left:107px;width:70px;height:60px;}
@@ -28,7 +29,7 @@
         .swiper {border-radius:24px;width:359px;height:272px;margin-bottom:8px}
         .swiper img {width:100%;}
         .img_wrap.first {margin-bottom:8px}
-        .img_wrap.last img + img {margin-top:8px}
+        .img_wrap {margin-top:8px}
         .mask {position:absolute;display:block;top:0;right:-3px;width:169px;height:72px;z-index:6;}
         .swiper-pagination {top:16.5px !important;right:27px !important;left:auto !important;bottom:auto !important;width:34px !important;height:auto;display:inline-block;text-align:right;line-height:0}
         .swiper-pagination-bullet {width:6px;height:6px;background:#fff;opacity: 0.2;margin:0 8px 0 0 !important}
@@ -36,6 +37,7 @@
         .go-pop1 {position:absolute;display:block;width:43px;height:56px;top:60px;right:19px;z-index:20}
         .go-pop2 {position:absolute;display:block;width:100%;height:100%;top:0;right:0;z-index:5}
         .go-charge {position:absolute;display:block;width:96px;height:96px;top:152px;left:18px;z-index:15;}
+        
     </style>
 </head>
 <body>
@@ -46,7 +48,7 @@
         </div>
         <div class="cont"> 
             <div class="img_wrap first"><img src="./images/b_img/myimg1.png" alt=""></div>
-            <div class="swiper">
+            <div class="swiper img_wrap">
                 <span class="mask"><img src="./images/b_img/swiper_mask.png" alt=""></span>
                 <div  class="swiper-wrapper">         
                     <div class="swiper-slide">
@@ -61,10 +63,13 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <div class="img_wrap last">
-                <img src="./images/b_img/myimg2.png" alt="">
-                <img src="./images/b_img/myimg3.png" alt="">
-            </div> 
+            <div class="img_wrap"><img src="./images/b_img/myimg2.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg3.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg4.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg5.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg6.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg7.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/myimg8.png" alt=""></div>
         </div>
         <div class="bottom">
             <a href="a-my.html" class="golink1"></a>
@@ -82,6 +87,42 @@
                 clickable: true,
             },
         });
+        document.addEventListener("DOMContentLoaded", function () {
+  const imgWraps = document.querySelectorAll('.img_wrap');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target); // 한 번 애니메이션이 동작한 후에는 관찰 중지
+      }
+    });
+  }, { threshold: 0.1 });
+
+  imgWraps.forEach(imgWrap => observer.observe(imgWrap));
+});
+        // document.querySelector('.cont').addEventListener('click', function (e) {
+        //     e.preventDefault();
+
+        //     const updateWraps = document.querySelectorAll('.cont .interaction');
+        //     const loding = document.querySelector('.center-lo'); 
+        //     const body = document.querySelector('body');
+
+        //     setTimeout(function()  {
+        //         loding.classList.add('on');
+        //         body.style.overflow = 'hidden';
+        //     }, 500);
+
+        //     updateWraps.forEach( function(element) {
+        //         element.classList.remove('on');
+        //         setTimeout(function()  {
+        //             element.classList.add('on');
+        //             loding.classList.remove('on');
+        //             body.style.overflow = '';
+        //         }, 1500);
+        //     })
+            
+        // })
 
     </script>
 </body>
