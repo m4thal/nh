@@ -25,6 +25,8 @@
         .golink2 {position:absolute;bottom:27px;left:107px;width:70px;height:60px;}
         .golink3 {position:absolute;bottom:27px;left:195px;width:70px;height:60px;}
         .global {position:absolute;top:51px;right:95px;width:43px;height:43px;}
+        .swiper img {width:100%;padding:0 8px}
+        .mask {position:absolute;display:block;top:0;right:0;width:169px;height:72px;z-index:10}
     </style>
 </head>
 <body>
@@ -33,10 +35,23 @@
             <a href="a-my-en.html" class="global"></a>
             <img src="./images/b_img/myheader.png" alt="">
         </div>
-        <div class="cont">
+        <div class="cont"> 
+            <div class="img_wrap"><img src="./images/b_img/myimg1.jpg" alt=""></div>
+            <div class="swiper">
+                <span class="mask"><img src="./images/b_img/swiper_mask.png" alt=""></span>
+                <div class="swiper-wrapper">         
+                    <div class="swiper-slide">
+                        <img src="./images/b_img/my-swiper1.png" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/b_img/my-swiper2.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </span>
             <div class="img_wrap ">
-                <img src="./images/b_img/myimg1.jpg" alt="">
                 <img src="./images/b_img/myimg2.jpg" alt="">
+                <img src="./images/b_img/myimg3.jpg" alt="">
             </div> 
         </div>
         <div class="bottom">
@@ -46,5 +61,24 @@
             <img src="./images/b_img/bottom1.png" alt="">
         </div>
     </div>
+
+    <script>
+    
+        var swiper = new Swiper(".swiper", {
+            //spaceBetween:13,
+           // centeredSlides: true,
+            //slidesPerView: 'auto',
+            //autoHeight: true,
+            // hashNavigation: {
+            //     watchState: true,
+            // },
+            effect:'fade',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+    </script>
 </body>
 </html>
