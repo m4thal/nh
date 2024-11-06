@@ -42,12 +42,12 @@
         .linkbox_r{display: flex;justify-content: flex-start;}
         .swiper-slide a{display:block; width: 50px;height: 31px;border-radius: 10px;font-family: "NotoSansCJKkr";color:#fff;font-size: 12px;font-weight: 500;line-height: 18px; /* 150% */letter-spacing: -0.5px; padding:6px 14px 7px 14px}
         .swiper-slide .charge{background:rgba(255,255,255,0.4); width:67px;}
-        .swiper-slide .charge#nobtn{cursor:default;}
         .swiper-slide .payment{background: #121619; margin-left:8px;}
         .swiper-slide .cardlink{display:block; width:200px; height:82px;/*background:red;*/ }
         .swiper-slide img {display: block;width: 100%;height: 100%;object-fit: cover;}
 
         .btm{position:fixed;bottom:0;left:0;}
+        .maplink{display:inline-block;position:absolute;bottom:0;left:190px;width: 90px;height: 85px;background-color:transparent;}
         .btm #btm3{width:100%; height:86px;}
 
         /* 팝업 */
@@ -83,7 +83,7 @@
                     <img src="./images/a-images/main/h_left_en.png" alt="">
                 </div>
                 <div class="icon">
-                    <a href="b-main.html" id="btn_en"><span class="blind">메인국문버전으로이동</span></a>
+                    <a href="b-main.html" id="btn_en"><span class="blind">main-ko</span></a>
                     <a href="#none" id="btn_alert"><span class="blind"></span></a>
                 </div>
             </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="cont_btm">
                 <img src="./images/a-images/main/main_btm1_en.png" alt="" id="btm1">
-                <a href="b-map-en.html" title="맵 영문페이지로이동"><img src="./images/a-images/main/main_btm_map_en.png" alt="" id="btm_map"></a>
+                <a href="b-map-en.html" title="spot"><img src="./images/a-images/main/main_btm_map_en.png" alt="" id="btm_map"></a>
                 <img src="./images/a-images/main/main_btm2_en.png" alt="" id="btm2">
             </div>
             <div class="" id="slide_box">
@@ -113,7 +113,7 @@
                             <div class="linkbox">
                                 <a class="cardlink" href="javascript:slideOpen('pop1')" title=""></a>
                                 <div class="linkbox_r">
-                                    <a class="charge" href="#none" title="" id="nobtn">Charge</a>
+                                    <a class="charge" href="b-charge-en.html" title="" id="nobtn">Charge</a>
                                     <a class="payment" href="b-QRpay-en.html" title="">Pay</a>
                                 </div>
                             </div>
@@ -131,6 +131,7 @@
                 </div>
             </div>
             <div class="btm">
+                <a href="b-map-en.html" title="spot" class="maplink"><span class="blind">spot</span></a>
                 <img src="./images/a-images/main/main_btm3_en.png" alt="" id="btm3">
             </div>
         </div>
@@ -187,6 +188,7 @@
                     if(LayerPopup.has(e.target).length === 0){
                         LayerPopup.removeClass('show').addClass('hide');
                         $(".container").removeClass('dim');
+                        $(".maplink").show();
                     }
                 });
                 
@@ -196,6 +198,7 @@
             function slideOpen(a){
                 $('#'+a).removeClass('hide').addClass('show');
                 $(".container").addClass('dim');
+                $(".maplink").hide();
             }
 
 

@@ -42,12 +42,12 @@
         .linkbox_r{display: flex;justify-content: flex-start;}
         .swiper-slide a{display:block; width: 50px;height: 31px;border-radius: 10px;font-family: "NotoSansCJKkr";color:#fff;font-size: 12px;font-weight: 500;line-height: 18px; /* 150% */letter-spacing: -0.5px; padding:6px 14px 7px 14px}
         .swiper-slide .charge{background:rgba(255,255,255,0.4);}
-        .swiper-slide .charge#nobtn{cursor:default;}
         .swiper-slide .payment{background: #121619; margin-left:8px;}
         .swiper-slide .cardlink{display:block; width:200px; height:82px;/*background:red;*/ }
         .swiper-slide img {display: block;width: 100%;height: 100%;object-fit: cover;}
 
         .btm{position:fixed;bottom:0;left:0;}
+        .maplink{display:inline-block;position:absolute;bottom:0;left:190px;width: 90px;height: 85px;background-color:transparent;}
         .btm #btm3{width:100%; height:86px;}
 
         /* 팝업 */
@@ -113,7 +113,7 @@
                             <div class="linkbox">
                                 <a class="cardlink" href="javascript:slideOpen('pop1')" title=""></a>
                                 <div class="linkbox_r">
-                                    <a class="charge" href="#none" title="" id="nobtn">충전</a>
+                                    <a class="charge" href="b-charge.html" title="" id="nobtn">충전</a>
                                     <a class="payment" href="b-QRpay.html" title="">결제</a>
                                 </div>
                             </div>
@@ -131,6 +131,7 @@
                 </div>
             </div>
             <div class="btm">
+                <a href="b-map.html" title="맵페이지로 이동" class="maplink"><span class="blind">주변</span></a>
                 <img src="./images/a-images/main/main_btm3.png" alt="" id="btm3">
             </div>
         </div>
@@ -187,6 +188,7 @@
                     if(LayerPopup.has(e.target).length === 0){
                         LayerPopup.removeClass('show').addClass('hide');
                         $(".container").removeClass('dim');
+                        $(".maplink").show();
                     }
                 });
                 
@@ -196,6 +198,7 @@
             function slideOpen(a){
                 $('#'+a).removeClass('hide').addClass('show');
                 $(".container").addClass('dim');
+                $(".maplink").hide();
             }
 
 
