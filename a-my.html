@@ -88,42 +88,19 @@
             },
         });
         document.addEventListener("DOMContentLoaded", function () {
-  const imgWraps = document.querySelectorAll('.img_wrap');
+            const imgWraps = document.querySelectorAll('.img_wrap');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); 
+                }
+                });
+            }, { threshold: 0.1 });
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // 한 번 애니메이션이 동작한 후에는 관찰 중지
-      }
-    });
-  }, { threshold: 0.1 });
-
-  imgWraps.forEach(imgWrap => observer.observe(imgWrap));
-});
-        // document.querySelector('.cont').addEventListener('click', function (e) {
-        //     e.preventDefault();
-
-        //     const updateWraps = document.querySelectorAll('.cont .interaction');
-        //     const loding = document.querySelector('.center-lo'); 
-        //     const body = document.querySelector('body');
-
-        //     setTimeout(function()  {
-        //         loding.classList.add('on');
-        //         body.style.overflow = 'hidden';
-        //     }, 500);
-
-        //     updateWraps.forEach( function(element) {
-        //         element.classList.remove('on');
-        //         setTimeout(function()  {
-        //             element.classList.add('on');
-        //             loding.classList.remove('on');
-        //             body.style.overflow = '';
-        //         }, 1500);
-        //     })
-            
-        // })
-
+            imgWraps.forEach(imgWrap => observer.observe(imgWrap));
+            });
+       
     </script>
 </body>
 </html>
