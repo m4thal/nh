@@ -11,9 +11,9 @@
         *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
         html{font-size:62.5%;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
         body{position:relative;height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;color:#333;margin:0;padding:0;border:0;background:#343A3F}
-        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:813px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden;border-radius:32px}
+        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden;border-radius:32px}
         .container::-webkit-scrollbar{display:none;}
-        .cont {height:calc(812px - 100px);overflow-y:scroll;padding:8px 8px 148px }
+        .cont {padding:8px 8px 60px;height:100%;overflow-y:scroll }
         .cont::-webkit-scrollbar{display:none;}
         .header {position:fixed;top:0;left:0;right:0;height:100px;}
         .header img {width:100%}
@@ -82,6 +82,7 @@
     <script>
 
         var swiper = new Swiper(".swiper", {
+            roundLengths : true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
