@@ -23,7 +23,7 @@
         .swiper .tit {text-align:center;margin-bottom:28px}
         .swiper .swiper-wrapper {align-items:flex-end}
         .swiper-slide .tit {display:none;width:111px;height:64px}
-        .swiper-slide-active .tit {display:block;width:111px;height:64px}
+        .swiper-slide-active .tit {display:block;width:100%;height:64px}
         .swiper-slide {display:flex;width:240px;height:360px;flex-direction:column;align-items: center;padding-bottom:40px}
         .swiper-slide .img {width:186px;height:280px}
         .swiper-slide-active  {padding-bottom:0}
@@ -36,6 +36,7 @@
         .swiper-slide-active .go-pop {display:block}
         .go-pop {display:none;position:absolute;top:93px;right:0;width:240px;height:360px} 
         .swiper-slide a:focus {outline:0}
+        .go-cahrge {position:absolute;bottom:19px;left:15px;width:110px;height:58px;}
     </style>
 </head>
 <body>
@@ -45,6 +46,7 @@
             <div class="swiper-wrapper">         
                 <div class="swiper-slide" data-hash="pop1">
                     <a href="a-pop1.html" class="go-pop" id="pop1"></a>
+                    <a href="a-charge.html" class="go-cahrge"></a>
                     <div class="tit"><img src="./images/b_img/swipertxt1.svg" alt=""></div>
                     <img src="./images/b_img/swiperimg1.svg" alt="" class="img">
                 </div>
