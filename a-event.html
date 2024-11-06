@@ -8,7 +8,9 @@
     <style>
         body *{font-family:'Pretendard-Medium', sans-serif;}
         /* 인트로 */
-        .intro{position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: intro 1s 0.5s ease-in forwards;}
+        .intro{position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .intro.on{animation: intro 1s ease-in-out forwards; transition: all .3s;}
+        .intro a{position:absolute;top:0;left:0;width:100%;height:100%;}
         @keyframes intro{0%{opacity: 1;}100%{opacity: 0;}}
         
         /* 셀렉 */
@@ -117,7 +119,7 @@
         @keyframes fire7{0%,100%{transform:scale(1);top:555px;}50%{transform:scale(1.7);top:548px;}}
         @keyframes fire8{0%,100%{transform:scale(1);top:558px;left:232px;}50%{transform:scale(2);top:553px; left:236px;}}
         .finish_btn{position:absolute;top:350px;left:50px;background:transparent;border:0;width:280px;height:230px;cursor:pointer;z-index:100;}
-
+        .cooking .link{position:absolute;top:57px;width:30px;height:30px;left:17px;}
         /* 조리 end */
         .pop{position:absolute;top:0;left:0;width:376px;height:100%; display: none;z-index: 100;}
         .pop a{position:absolute;width:277px;height:50px;bottom:176px;right:49px;}
@@ -167,6 +169,7 @@
                 <img src="./images/a-images/event/fire8.svg" alt="">
             </div>
             <button class="finish_btn"></button>
+            <a href="./a-event.html" class="link"></a>
         </div>
         <!-- 3번 노출 -->
         <a href="#" class="loding_wrap">
@@ -178,7 +181,7 @@
         </a>
         <!-- 2번 노출 -->
         <div class="select">
-            <a href="#"></a>
+            <a href="./a-event.html"></a>
             <img src="./images/a-images/event/select.png" alt="">
             <a href="#" class="soup" onclick="this.classList.add('on')"></a>
             <button></button>
@@ -186,10 +189,16 @@
         <!-- 1번 노출 -->
         <div class="intro">
             <img src="./images/a-images/event/intro.png" alt="">
+            <a href="#" onclick="this.parentNode.classList.add('on')"></a>
         </div>
         <div class="pop">
             <img src="./images/a-images/event/finish.png" alt="">
-            <a href="#"></a>
+            <a href="#" 
+                onclick="this.parentNode.style.display='none';
+                cooking.style.background = ''
+                cooking.style.opacity = '';">
+            </a>
+            <div></div>
         </div>
     </div>
     <script>
@@ -245,6 +254,8 @@
             increaseNumber1();
             progress_bar.classList.add("on")
             setTimeout( function(){
+                cooking.style.background = "#000";
+                cooking.style.opacity = ".7";
                 document.querySelector(".pop").style.display = 'block';
             },1000)
         })
