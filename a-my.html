@@ -13,14 +13,14 @@
         body{position:relative;height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;color:#333;margin:0;padding:0;border:0;background:#343A3F}
         .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden;border-radius:32px}
         .container::-webkit-scrollbar{display:none;}
-        .cont {padding:8px 8px 60px;height:100%;overflow-y:scroll }
+        .cont {padding:0 8px 148px;height:712px;overflow-y:scroll }
         .cont::-webkit-scrollbar{display:none;}
         .header {position:fixed;top:0;left:0;right:0;height:100px;}
         .header img {width:100%}
-        .bottom {position:fixed;bottom:0;left:0;right:0;height:88px;border-top-left-radius: 32px;border-top-right-radius: 32px;z-index:10}
+        .bottom {position:fixed;bottom:0;left:0;right:0;height:88px;border-top-left-radius: 32px;border-top-right-radius:32px;z-index:10}
         .bottom img {width:100%;line-height:0;vertical-align:bottom;border-top-left-radius:32px;border-top-right-radius:32px;}
         .img_wrap {position:relative;opacity: 0;transform: translateY(20px);transition: opacity 1s ease, transform 1s ease;}
-        .img_wrap.show {opacity: 1;transform: translateY(0);}
+        .img_wrap.show {opacity: 1;transform: translateY(0);margin-top:8px}
         .img_wrap img {display:block;width:100%}
         .golink1 {position:absolute;bottom:27px;left:20px;width:70px;height:60px;}
         .golink2 {position:absolute;bottom:27px;left:107px;width:70px;height:60px;}
@@ -28,8 +28,6 @@
         .global {position:absolute;top:51px;right:95px;width:43px;height:43px;}
         .swiper {border-radius:24px;width:359px;height:272px;margin-bottom:8px}
         .swiper img {width:100%;}
-        .img_wrap.first {margin-bottom:8px}
-        .img_wrap {margin-top:8px}
         .mask {position:absolute;display:block;top:0;right:-3px;width:169px;height:72px;z-index:6;}
         .swiper-pagination {top:16.5px !important;right:27px !important;left:auto !important;bottom:auto !important;width:34px !important;height:auto;display:inline-block;text-align:right;line-height:0}
         .swiper-pagination-bullet {width:6px;height:6px;background:#fff;opacity: 0.2;margin:0 8px 0 0 !important}
@@ -54,17 +52,11 @@
                     <div class="swiper-slide">
                         <a href="a-pop1-1.html" class="go-pop1"></a>
                         <a href="a-charge.html" class="go-charge"></a>
-                        <object
-                        data="./images/b_img/my_swiper1.svg"
-                        type="image/svg+xml"
-                        className="w-[375px] md:hidden"
-                        >
-                        <img src="./images/b_img/my_swiper1.svg" alt="~~~" className="w-[375px]" />
-                        </object>
+                        <img src="./images/b_img/my_swiper1.svg" alt="">
                     </div>
                     <div class="swiper-slide">
                         <a href="a-pop2-1.html" class="go-pop2"></a>
-                        <img src="./images/b_img/my_swiper2.png" alt="">
+                        <img src="./images/b_img/my_swiper2.svg" alt="">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -106,7 +98,7 @@
             }, { threshold: 0.1 });
 
             imgWraps.forEach(imgWrap => observer.observe(imgWrap));
-            });
+        });
        
     </script>
 </body>

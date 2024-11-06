@@ -8,32 +8,37 @@
     <script src="./res/jquery-3.6.4.min.js"></script>
     <title>A 주변</title>
     <style>
-        *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
+       *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
         html{font-size:62.5%;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
         body{position:relative;height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;color:#333;margin:0;padding:0;border:0;background:#343A3F}
-        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:813px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden;border-radius:32px}
+        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;padding:100px 0 88px;background:#000;box-sizing:border-box;overflow:hidden;border-radius:32px}
         .container::-webkit-scrollbar{display:none;}
-        .cont {height:calc(812px - 100px);padding-bottom:88px;overflow-y:scroll;}
+        .cont {padding:0 0 148px 8px;height:712px;overflow-y:scroll }
         .cont::-webkit-scrollbar{display:none;}
         .header {position:fixed;top:0;left:0;right:0;height:100px;}
         .header img {width:100%}
         .bottom {position:fixed;bottom:0;left:0;right:0;height:88px;}
         .bottom img {width:100%;line-height:0;vertical-align:bottom;border-top-left-radius:32px;border-top-right-radius:32px;}
-        .img_wrap {position:relative}
+        .img_wrap {position:relative;opacity: 0;transform: translateY(20px);transition: opacity 1s ease, transform 1s ease;margin-top:40px}
+        .img_wrap.show {opacity: 1;transform: translateY(0);}
         .img_wrap img {display:block;width:100%}
+        .img_wrap.first {margin-top:8px}
+        .img_wrap.pd {padding-right:8px}
         .golink1 {position:absolute;bottom:27px;left:20px;width:70px;height:60px;}
         .golink2 {position:absolute;bottom:27px;left:107px;width:70px;height:60px;}
         .golink3 {position:absolute;bottom:27px;left:195px;width:70px;height:60px;}
     </style>
 </head>
 <body>
-    <div class="container b-wallet">
+    <div class="container">
         <div class="header"><img src="./images/b_img/aroundheader.png" alt=""></div>
         <div class="cont">
-            <div class="img_wrap">
-                <img src="./images/b_img/aroundimg1.jpg" alt="">
-                <img src="./images/b_img/aroundimg2.jpg" alt="">
-            </div> 
+            <div class="img_wrap first pd"><img src="./images/b_img/aroundimg1.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/aroundimg2.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/aroundimg3.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/aroundimg4.png" alt=""></div>
+            <div class="img_wrap pd"><img src="./images/b_img/aroundimg5.png" alt=""></div>
+            <div class="img_wrap"><img src="./images/b_img/aroundimg6.png" alt=""></div>
         </div>
         <div class="bottom">
             <a href="a-my.html" class="golink1"></a>
@@ -42,5 +47,21 @@
             <img src="./images/b_img/bottom3.png" alt="">
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imgWraps = document.querySelectorAll('.img_wrap');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); 
+                }
+                });
+            }, { threshold: 0.1 });
+
+            imgWraps.forEach(imgWrap => observer.observe(imgWrap));
+        });
+    </script>
 </body>
 </html>
