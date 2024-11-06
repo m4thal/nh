@@ -19,12 +19,14 @@
         .img-sec.active{opacity: 1; display: block;}
         .img-sec.first button{position: absolute; width: 359px; height: 80px; left: 8px; top: 116px; cursor: pointer; background-color: transparent; border: none;}
         .img-sec.second button{position: absolute; width: 359px; height: 80px; left: 8px; top: 116px; cursor: pointer; background-color: transparent; border: none;}
-        .img-sec.third button{position: absolute; width: 319px; height: 57px; left: 28px; bottom: 36px; cursor: pointer; background-color: transparent; border: none;}
+        .img-sec.third button{position: absolute; width: 319px; height: 57px; left: 28px; bottom: 36px; cursor: pointer; background-color: transparent; border: none; z-index: 2;}
+        .img-sec.third .pop1{position: absolute; bottom: -455px; padding: 8px; z-index: 100; transition: all ease 1s; cursor: pointer;}
+        .img-sec.third .dim1{position: absolute; top: 0; opacity: 0;}
         .img-sec.fourth button{position: absolute; width: 319px; height: 48px; left: 28px; bottom: 264px; cursor: pointer; background-color: transparent; border: none;}
         .img-sec.fifth{height: 812px;}
         .img-sec.fifth button{position: absolute; width: 359px; height: 57px; left: 8px; bottom: 8px; cursor: pointer; background-color: transparent; border: none; z-index: 2;}
-        .img-sec.fifth .pop{position: absolute; bottom: -455px; padding: 8px; z-index: 100; transition: all ease 1s; cursor: pointer;}
-        .img-sec.fifth .dim{position: absolute; top: 0; opacity: 0;}
+        .img-sec.fifth .pop2{position: absolute; bottom: -455px; padding: 8px; z-index: 100; transition: all ease 1s; cursor: pointer;}
+        .img-sec.fifth .dim2{position: absolute; top: 0; opacity: 0;}
     </style>
 </head>
 <body>
@@ -41,21 +43,19 @@
             <div class="img-sec third">
                 <img src="./images/b_img/img_charge_03_en.png" alt="">
                 <button>&nbsp;</button>
-            </div>
-            <div class="img-sec fourth">
-                <img src="./images/b_img/img_charge_04_en.png" alt="">
-                <button>&nbsp;</button>
+                <img src="./images/b_img/img_charge_04_en.png" alt="" class="pop1">
+                <img src="./images/b_img/img_charge_dim1_en.png" alt="" class="dim1">
             </div>
             <div class="img-sec fifth">
                 <img src="./images/b_img/img_charge_05_en.png" alt="">
                 <button>&nbsp;</button>
-                <img src="./images/b_img/img_charge_06_en.png" alt="" class="pop">
-                <img src="./images/b_img/img_charge_dim_en.png" alt="" class="dim">
+                <img src="./images/b_img/img_charge_06_en.png" alt="" class="pop2">
+                <img src="./images/b_img/img_charge_dim_en.png" alt="" class="dim2">
             </div>
         </div>
     </div>
     <script>
-        document.querySelector('.first button').addEventListener("click", function() {
+       document.querySelector('.first button').addEventListener("click", function() {
             document.querySelector('.first').classList.remove('active');
             document.querySelector('.second').classList.add('active');
         });
@@ -64,20 +64,20 @@
             document.querySelector('.third').classList.add('active');
         });
         document.querySelector('.third button').addEventListener("click", function() {
-            document.querySelector('.third').classList.remove('active');
-            document.querySelector('.fourth').classList.add('active');
+            document.querySelector('.pop1').style.bottom = "0px"
+            document.querySelector('.dim1').style.opacity= "1";
         });
-        document.querySelector('.fourth button').addEventListener("click", function() {
-            document.querySelector('.fourth').classList.remove('active');
+        document.querySelector('.pop1').addEventListener("click", function() {
+            document.querySelector('.third').classList.remove('active');
             document.querySelector('.fifth').classList.add('active');
         });
         document.querySelector('.fifth button').addEventListener("click", function() {
-            document.querySelector('.pop').style.bottom = "0px"
-            document.querySelector('.dim').style.opacity= "1";
+            document.querySelector('.pop2').style.bottom = "0px"
+            document.querySelector('.dim2').style.opacity= "1";
             document.querySelector('.fifth button').classList.add('active');
         });
-        document.querySelector('.pop').addEventListener("click", function() {
-            window.location.href = "./a-my-en.html";
+        document.querySelector('.pop2').addEventListener("click", function() {
+            window.location.href = "./a-my.html";
         });
     </script>
     </html>
