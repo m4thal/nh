@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A 충전</title>
+    <link rel="stylesheet" href="./res/swiper-bundle.min.css">
+    <script src="./res/swiper-bundle.min.js"></script>
+    <script src="./res/jquery-3.6.4.min.js"></script>
+    <style>
+        *, :after, :before {background-repeat:no-repeat;box-sizing:border-box}
+        html{font-size:62.5%;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-ms-overflow-style:none;scrollbar-width:none;}
+        body{height:100vh;font-size:1.6rem; font-family:'NotoSansCJKkr', sans-serif; line-height:1.5;-webkit-font-smoothing:antialiased;word-wrap: break-word;word-break:keep-all;-webkit-overflow-scrolling:touch;background:#343A3F;color:#333;margin:0;padding:0;border:0;}
+        .container{position:relative;width:375px;top:50%;left:50%;transform:translate(-50%, -50%);margin:0;height:812px;min-height:812px;overflow-y:scroll;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none;border-radius:32px }
+        .container::-webkit-scrollbar{display:none;}
+        .img_wrap {position:relative}
+        .img_wrap img {display:block;width:100%}
+        .img-sec{position: absolute; opacity: 0; display: none; transition: all ease 1s;}
+        .img-sec.active{opacity: 1; display: block;}
+        .img-sec.first button{position: absolute; width: 359px; height: 80px; left: 8px; top: 116px; cursor: pointer; background-color: transparent; border: none;}
+        .img-sec.second button{position: absolute; width: 359px; height: 80px; left: 8px; top: 116px; cursor: pointer; background-color: transparent; border: none;}
+        .img-sec.third button{position: absolute; width: 319px; height: 57px; left: 28px; bottom: 36px; cursor: pointer; background-color: transparent; border: none;}
+        .img-sec.fourth button{position: absolute; width: 319px; height: 48px; left: 28px; bottom: 264px; cursor: pointer; background-color: transparent; border: none;}
+        .img-sec.fifth{height: 812px;}
+        .img-sec.fifth button{position: absolute; width: 359px; height: 57px; left: 8px; bottom: 8px; cursor: pointer; background-color: transparent; border: none; z-index: 2;}
+        .img-sec.fifth .pop{position: absolute; bottom: -455px; padding: 8px; z-index: 100; transition: all ease 1s; cursor: pointer;}
+        .img-sec.fifth .dim{position: absolute; top: 0; opacity: 0;}
+    </style>
+</head>
+<body>
+    <div id="wrap" class="container event">
+        <div class="img_wrap">
+            <div class="img-sec first active">
+                <img src="./images/b_img/img_charge_01_en.png" alt="">
+                <button>&nbsp;</button>
+            </div>
+            <div class="img-sec second">
+                <img src="./images/b_img/img_charge_02_en.png" alt="">
+                <button>&nbsp;</button>
+            </div>
+            <div class="img-sec third">
+                <img src="./images/b_img/img_charge_03_en.png" alt="">
+                <button>&nbsp;</button>
+            </div>
+            <div class="img-sec fourth">
+                <img src="./images/b_img/img_charge_04_en.png" alt="">
+                <button>&nbsp;</button>
+            </div>
+            <div class="img-sec fifth">
+                <img src="./images/b_img/img_charge_05_en.png" alt="">
+                <button>&nbsp;</button>
+                <img src="./images/b_img/img_charge_06_en.png" alt="" class="pop">
+                <img src="./images/b_img/img_charge_dim_en.png" alt="" class="dim">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.first button').addEventListener("click", function() {
+            document.querySelector('.first').classList.remove('active');
+            document.querySelector('.second').classList.add('active');
+        });
+        document.querySelector('.second button').addEventListener("click", function() {
+            document.querySelector('.second').classList.remove('active');
+            document.querySelector('.third').classList.add('active');
+        });
+        document.querySelector('.third button').addEventListener("click", function() {
+            document.querySelector('.third').classList.remove('active');
+            document.querySelector('.fourth').classList.add('active');
+        });
+        document.querySelector('.fourth button').addEventListener("click", function() {
+            document.querySelector('.fourth').classList.remove('active');
+            document.querySelector('.fifth').classList.add('active');
+        });
+        document.querySelector('.fifth button').addEventListener("click", function() {
+            document.querySelector('.pop').style.bottom = "0px"
+            document.querySelector('.dim').style.opacity= "1";
+            document.querySelector('.fifth button').classList.add('active');
+        });
+        document.querySelector('.pop').addEventListener("click", function() {
+            window.location.href = "./a-my-en.html";
+        });
+    </script>
+    </html>
+</body>
